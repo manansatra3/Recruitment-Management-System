@@ -8,8 +8,6 @@ const constructorMethod = app => {
         return res.redirect("/");
     });
   };
-  // hello2
-  module.exports = constructorMethod;
-//hello
-//y
-// c
+
+module.exports = constructorMethod;
+
