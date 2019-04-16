@@ -4,7 +4,7 @@ const myForm = document.getElementById("signup-form");
 if (myForm) {
     //Get a reference to the text_input field
     const textInput = document.getElementById("username");
-
+    const emailInput = document.getElementById("email")
     //Add an event listener for the form submit
     myForm.addEventListener("submit", event => {
         //We need to prevent the default behavior of the form submit
@@ -31,13 +31,6 @@ if (myForm) {
                 $("#usererror").html("User name can only contain alphanumeric characters and underscore and it should start with an alphabet!");
                 return
             }
-            
-
-            //We create the list item element variable
-            const li = `<li> ${textInput.value} </li>`
-
-            //we add the li element created above to the UL
-            $("#myList").append(li);
 
             //We then reset the form
             $("#myForm").trigger('reset');
@@ -53,6 +46,40 @@ if (myForm) {
             //If the user did not enter input, we show the error div and text
             $("#usererror").show();
             $("#usererror").html("You Need to supply an user name!");
+
+            //then set the cursor focus to the input field
+            $('#text_input').focus();
+        }
+
+        if(emailInput.value)
+        {
+            console.log(emailInput.value);
+            $("#emailerror").hide();
+            
+            var regexp = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9\_]+){0,15}@[a-zA-Z0-9\_\-]+(\.[a-zA-Z0-9\_\-]+){0,4}$/;
+            if(emailInput.value.search(regexp) == -1)
+            {   
+                console.log("hello");
+                $("#emailerror").show();
+                $("#emailerror").html("Invalid Email ID!");
+                return
+            }
+        
+
+            //We then reset the form
+            $("#myForm").trigger('reset');
+            /*  you can also do this by just clearing the text input as shown below
+                if you want to reset all fields, use the reset example above
+                if you want to just clear certain form fields you can use the example below
+                $("#text_input").val('');
+            */
+
+            //then set the cursor focus to the input box
+            $('#text_input').focus();
+        } else {
+            //If the user did not enter input, we show the error div and text
+            $("#emailerror").show();
+            $("#emailerror").html("You Need to supply an user name!");
 
             //then set the cursor focus to the input field
             $('#text_input').focus();
