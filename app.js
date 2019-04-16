@@ -9,6 +9,10 @@ const exphbs = require("express-handlebars");
 
 const Handlebars = require("handlebars");
 
+var path = require ("path");
+const viewPath = path.join(__dirname, "/views");
+
+
 const handlebarsInstance = exphbs.create({
   defaultLayout: "main",
   // Specify helpers which are only registered on this instance.
@@ -41,6 +45,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(rewriteUnsupportedBrowserMethods);
 app.engine("handlebars",handlebarsInstance.engine);
 app.set("view engine","handlebars");
+app.set("views", viewPath);
 configRoutes(app);
 
 app.listen(3000, () => {
