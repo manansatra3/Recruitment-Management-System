@@ -1,242 +1,253 @@
 <h1>Hello</h1>
 <!-- append hello username later in the project -->
 <!-- <h2>Fill out the application form</h2> -->
-<form method="POST">
-    <!-- 1. Auto complete the form using users profile data
+<div class='container'>
+    <form onsubmit='checkFormValidation(); return false;' id='applicationSubmissionForm'>
+        <!-- 1. Auto complete the form using users profile data
              2. Basic Validations
              3. We can modify the form using Ajax and split the form in various sections
              4. can also add EEO
         -->
-    <hr>
-    <h2>Personal Information</h2>
-    <hr>
-    <table>
-        <tr>
-            <th><label>First Name:</label></th>
-            <td></td>
-            <td><input type='text' name='firstName'></td>
-        </tr>
-        <tr>
-            <th><label>Middle Name:</label></th>
-            <td></td>
-            <td><input type='text' name='middleName'></td>
-        </tr>
-        <tr>
-            <th><label>Last Name:</label></th>
-            <td></td>
-            <td><input type='text' name='lastName'></td>
-        </tr>
-        <tr>
-            <th><label>Email:</label></th>
-            <td></td>
-            <td><input type='email' name='email'></td>
-        </tr>
-        <tr>
-            <th><label>Phone Number:</label></th>
-            <td></td>
-            <td><input type='number' placeholder="U.S Number and 10 Digits Only" name='phoneNumber'></td>
-        </tr>
-        <tr>
-            <th rowspan="6"><label>Address:</label></th>
-        </tr>
-        <tr>
-            <td><label>Street Address:</label></td>
-            <td><input type='text' name='street'></td>
-        </tr>
+        <hr>
+        <h2>Personal Information</h2>
+        <hr>
+        <table class='table table-striped'>
+            <tr>
+                <th><label>First Name:</label></th>
+                <td></td>
+                <td><input class='form-control' type='text' name='firstName' required></td>
+            </tr>
+            <tr>
+                <th><label>Middle Name:</label></th>
+                <td></td>
+                <td><input class='form-control' type='text' id='middleName' name='middleName'></td>
+            </tr>
+            <tr>
+                <th><label>Last Name:</label></th>
+                <td></td>
+                <td><input class='form-control' type='text' name='lastName' required></td>
+            </tr>
+            <tr>
+                <th><label>Email:</label></th>
+                <td></td>
+                <td><input class='form-control' type='email' name='email' required></td>
+            </tr>
+            <tr>
+                <th><label>Phone Number:</label></th>
+                <td></td>
+                <td><input type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name='phoneNumber' class='form-control' placeholder="000-000-0000" required></td>
+            </tr>
+            <tr>
+                <th rowspan="6"><label>Address:</label></th>
+            </tr>
+            <tr>
+                <td><label>Street Address:</label></td>
+                <td><input class='form-control' type='text' name='street' required></td>
+            </tr>
 
-        <tr>
-            <td><label>Apartment Number:</label></td>
-            <td><input type='number' name='aptNumber'></td>
-        </tr>
-        <tr>
-            <td><label>City:</label></td>
-            <td><input type='text' name='city'></td>
-        </tr>
-        <tr>
-            <td><label>State:</label></td>
-            <td><select name="state">
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MN">Minnesota</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
-                </select></td>
-        </tr>
-        <tr>
-            <td><label>Zip Code:</label></td>
-            <td><input type='number' name='zipCode'></td>
-        </tr>
-    </table>
-    <hr>
-    <h2>Education</h2>
-    <hr>
-    <table>
-        <tr>
-            <th rowspan='6'>Current Education:</th>
-        </tr>
-        <tr>
-            <td><label>University Name:</label></td>
-            <td><input type='text' name='currentUniversity'></td>
-        </tr>
-        <tr>
-            <td><label>GPA:</label></td>
-            <td><input type='number' min='0.0' max='4.0' step='0.1' name='gpa'></td>
-        </tr>
-        <tr>
-            <td><label>Degree:</label></td>
-            <td><input type='text' name='degree'></td>
-        </tr>
-        <tr>
-            <td><label>Major:</label></td>
-            <td><input type='text' name='major'></td>
-        </tr>
-        <tr>
-            <td><label>Graduation:</label></td>
-            <td><input type='month' name='graduation'></td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <hr>
-            </td>
-        </tr>
-        <tr>
-            <th rowspan='6'>Previous Education:</th>
-        </tr>
-        <tr>
-            <td><label>University Name:</label></td>
-            <td><input type='text' name='previousUniversity'></td>
-        </tr>
-        <tr>
-            <td><label>GPA:</label></td>
-            <td><input type='number' min='0.0' max='4.0' step='0.1' name='previousGpa'></td>
-        </tr>
-        <tr>
-            <td><label>Degree:</label></td>
-            <td><input type='text' name='previousDegree'></td>
-        </tr>
-        <tr>
-            <td><label>Major:</label></td>
-            <td><input type='text' name='previousMajor'></td>
-        </tr>
-        <tr>
-            <td><label>Graduation:</label></td>
-            <td><input type='month' name='previousGraduation'></td>
-        </tr>
-    </table>
-    <hr>
-    <h2>Work</h2>
-    <hr>
-    <table>
-        <tr>
-            <th rowspan="4">Current Work:</th>
-        </tr>
-        <tr>
-            <td><label>Employer Name:</label></td>
-            <td><input type='text' name='currentEmployer'></td>
-        </tr>
-        <tr>
-            <td><label>Employer City:</label></td>
-            <td><input type='text' name='currentEmployerCity'></td>
-        </tr>
-        <tr>
-            <td><label>Position:</label></td>
-            <td><input type='text' name='currentPosition'></td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <hr>
-            </td>
-        </tr>
-        <tr>
-            <th rowspan="4">Previous Work:</th>
-        </tr>
-        <tr>
-            <td><label>Employer Name:</label></td>
-            <td><input type='text' name='previousEmployer'></td>
-        </tr>
-        <tr>
-            <td><label>Employer City:</label></td>
-            <td><input type='text' name='previousEmployerCity'></td>
-        </tr>
-        <tr>
-            <td><label>Position:</label></td>
-            <td><input type='text' name='previousPosition'></td>
-        </tr>
-    </table>
-    <hr>
-    <h2>Document Uploads</h2>
-    <hr>
-    <table>
-        <tr>
-            <th><label>Resume:</label></th>
-            <td><input type='file' name='resume'></td>
-        </tr>
-        <tr>
-            <th><label>Cover Letter:</label></th>
-            <td><input type='file' name='coverLetter'></td>
-        </tr>
-        <tr>
-            <th><label>Transcripts:</label></th>
-            <td><input type='file' name='transcripts'></td>
-        </tr>
-        <tr>
-            <th><label>Other Documents:</label></th>
-            <td><input type='file' name='otherDocuments'></td>
-        </tr>
-    </table>
-    <hr>
-    <h2>Extra Comments</h2>
-    <hr>
-    <table>
-        <tr>
-            <td colspan="2"><input type='text' name='extraComments'></td>
-        </tr>
-    </table>
-    <hr>
-    <input type='submit' name='submitApplicationForm'>
-</form>
+            <tr>
+                <td><label>Apartment Number:</label></td>
+                <td><input class='form-control' type='number' name='aptNumber'></td>
+            </tr>
+            <tr>
+                <td><label>City:</label></td>
+                <td><input class='form-control' type='text' name='city' required></td>
+            </tr>
+            <tr>
+                <td><label>State:</label></td>
+                <td>
+                    {{!-- <div class="col-sm-10"> --}}
+                    <select class="form-control" id='state' name="state" required>
+                        <option value="">N/A</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DC">District of Columbia</option>
+                        <option value="DE">Delaware</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="IA">Iowa</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MD">Maryland</option>
+                        <option value="ME">Maine</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MT">Montana</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NY">New York</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VA">Virginia</option>
+                        <option value="VT">Vermont</option>
+                        <option value="WA">Washington</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                    {{!-- </div> --}}
+                </td>
+            </tr>
+            <tr>
+                <td><label>Zip Code:</label></td>
+                <td><input class='form-control' type='number' name='zipCode' required></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Education</h2>
+        <hr>
+        <table class='table table-striped'>
+            <tr>
+                <th rowspan='6'>Most Recent Education:</th>
+            </tr>
+            <tr>
+                <td><label>University Name:</label></td>
+                <td><input class='form-control' type='text' name='currentUniversity' required></td>
+            </tr>
+            <tr>
+                <td><label>GPA:</label></td>
+                <td><input class='form-control' type='number' min='0.0' max='4.0' step='0.1' name='gpa' id='gpa' value='0.0'></td>
+            </tr>
+            <tr>
+                <td><label>Degree:</label></td>
+                <td><input class='form-control' type='text' name='degree' required></td>
+            </tr>
+            <tr>
+                <td><label>Major:</label></td>
+                <td><input class='form-control' type='text' name='major' required></td>
+            </tr>
+            <tr>
+                <td><label>Graduation:</label></td>
+                <td><input class='form-control' type='month' id='graduation' name='graduation' required></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <th rowspan='6'>Previous Education:</th>
+            </tr>
+            <tr>
+                <td><label>University Name:</label></td>
+                <td><input class='form-control' type='text' name='previousUniversity' required></td>
+            </tr>
+            <tr>
+                <td><label>GPA:</label></td>
+                <td><input class='form-control' type='number' min='0.0' max='4.0' step='0.1' name='previousGpa' value='0.0'></td>
+            </tr>
+            <tr>
+                <td><label>Degree:</label></td>
+                <td><input class='form-control' type='text' name='previousDegree' required></td>
+            </tr>
+            <tr>
+                <td><label>Major:</label></td>
+                <td><input class='form-control' type='text' name='previousMajor' required></td>
+            </tr>
+            <tr>
+                <td><label>Graduation:</label></td>
+                <td><input class='form-control' type='month' name='previousGraduation' required></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Work</h2>
+        <hr>
+        <table class='table table-striped'>
+            <tr>
+                <th rowspan="4">Most Recent Work:</th>
+            </tr>
+            <tr>
+                <td><label>Employer Name:</label></td>
+                <td><input class='form-control' type='text' name='currentEmployer'></td>
+            </tr>
+            <tr>
+                <td><label>Employer City:</label></td>
+                <td><input class='form-control' type='text' name='currentEmployerCity'></td>
+            </tr>
+            <tr>
+                <td><label>Position:</label></td>
+                <td><input class='form-control' type='text' name='currentPosition'></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <th rowspan="4">Previous Work:</th>
+            </tr>
+            <tr>
+                <td><label>Employer Name:</label></td>
+                <td><input class='form-control' type='text' name='previousEmployer'></td>
+            </tr>
+            <tr>
+                <td><label>Employer City:</label></td>
+                <td><input class='form-control' type='text' name='previousEmployerCity'></td>
+            </tr>
+            <tr>
+                <td><label>Position:</label></td>
+                <td><input class='form-control' type='text' name='previousPosition'></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Document Uploads</h2>
+        <hr>
+        <table class='table table-striped'>
+            <tr>
+                <th><label>Resume:</label></th>
+                <td><input class='form-control' type='file' name='resume' required></td>
+            </tr>
+            <tr>
+                <th><label>Cover Letter:</label></th>
+                <td><input class='form-control' type='file' name='coverLetter' required></td>
+            </tr>
+            <tr>
+                <th><label>Transcripts:</label></th>
+                <td><input class='form-control' type='file' name='transcripts' required></td>
+            </tr>
+            <tr>
+                <th><label>Other Documents:</label></th>
+                <td><input class='form-control' type='file' name='otherDocuments'></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Extra Comments</h2>
+        <hr>
+        <table class='table table-striped'>
+            <tr>
+                <td colspan="2"><input class='form-control' type='text' name='extraComments'></td>
+            </tr>
+        </table>
+        <hr>
+        <input type="submit" class="btn btn-primary btn-lg" name='submitApplicationForm'>
+        {{!-- <button type='submit' class="btn btn-primary btn-lg" name='submitApplicationForm'>Submit</button> --}}
+    </form>
+    {{!-- </div> --}}
+</div>
