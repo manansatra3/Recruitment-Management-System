@@ -3,7 +3,6 @@ const router = express.Router();
 const data = require("../data");
 
 router.get('/submitApplication', (req, res)=> {
-    console.log(__dirname)
-    res.sendFile('./submitApplication');
+    res.render('applicationPages/submitApplication.handlebars')
 });
 module.exports = router;
