@@ -3,7 +3,7 @@ const router = express.Router();
 const data = require("../data");
 
 router.get('/submitApplication', (req, res)=> {
-    res.render('applicationPages/submitApplication.handlebars')
+    res.render('submitApplication.handlebars')
 });
 
 router.get("/profile", (req, res)=>{
