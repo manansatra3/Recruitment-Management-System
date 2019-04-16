@@ -1,11 +1,6 @@
 {{!-- extract information from this page and enter in mongodb --Chrstina Li --}}
 <div class='container'>
     <form onsubmit='checkFormValidation(); return false;' id='applicationSubmissionForm'>
-        <!-- 1. Auto complete the form using users profile data
-             2. Basic Validations
-             3. We can modify the form using Ajax and split the form in various sections
-             4. can also add EEO
-        -->
         <hr>
         <h2>Personal Information</h2>
         <hr>
@@ -33,7 +28,8 @@
             <tr>
                 <th><label>Phone Number:</label></th>
                 <td></td>
-                <td><input type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name='phoneNumber' class='form-control' placeholder="000-000-0000" required></td>
+                <td><input type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name='phoneNumber' class='form-control'
+                        placeholder="000-000-0000" required></td>
             </tr>
             <tr>
                 <th rowspan="6"><label>Address:</label></th>
@@ -54,7 +50,6 @@
             <tr>
                 <td><label>State:</label></td>
                 <td>
-                    {{!-- <div class="col-sm-10"> --}}
                     <select class="form-control" id='state' name="state" required>
                         <option value="">N/A</option>
                         <option value="AK">Alaska</option>
@@ -131,7 +126,8 @@
             </tr>
             <tr>
                 <td><label>GPA:</label></td>
-                <td><input class='form-control' type='number' min='0.0' max='4.0' step='0.1' name='gpa' id='gpa' value='0.0'></td>
+                <td><input class='form-control' type='number' min='0.0' max='4.0' step='0.1' name='gpa' id='gpa'
+                        value='0.0'></td>
             </tr>
             <tr>
                 <td><label>Degree:</label></td>
@@ -159,7 +155,8 @@
             </tr>
             <tr>
                 <td><label>GPA:</label></td>
-                <td><input class='form-control' type='number' min='0.0' max='4.0' step='0.1' name='previousGpa' value='0.0'></td>
+                <td><input class='form-control' type='number' min='0.0' max='4.0' step='0.1' name='previousGpa'
+                        value='0.0'></td>
             </tr>
             <tr>
                 <td><label>Degree:</label></td>
@@ -215,38 +212,8 @@
                 <td><input class='form-control' type='text' name='previousPosition'></td>
             </tr>
         </table>
-        {{!-- <hr>
-        <h2>Document Uploads</h2>
-        <hr>
-        <table class='table table-striped'>
-            <tr>
-                <th><label>Resume:</label></th>
-                <td><input class='form-control' type='file' name='resume' required></td>
-            </tr>
-            <tr>
-                <th><label>Cover Letter:</label></th>
-                <td><input class='form-control' type='file' name='coverLetter' required></td>
-            </tr>
-            <tr>
-                <th><label>Transcripts:</label></th>
-                <td><input class='form-control' type='file' name='transcripts' required></td>
-            </tr>
-            <tr>
-                <th><label>Other Documents:</label></th>
-                <td><input class='form-control' type='file' name='otherDocuments'></td>
-            </tr>
-        </table>
-        <hr>
-        <h2>Extra Comments</h2>
-        <hr>
-        <table class='table table-striped'>
-            <tr>
-                <td colspan="2"><input class='form-control' type='text' name='extraComments'></td>
-            </tr>
-        </table> --}}
         <hr>
         <input type="submit" class="btn btn-primary btn-lg" name='submitApplicationForm'>
-        {{!-- <button type='submit' class="btn btn-primary btn-lg" name='submitApplicationForm'>Submit</button> --}}
     </form>
     {{!-- </div> --}}
 </div>
