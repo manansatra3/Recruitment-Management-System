@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-sm-12">
-    <form id="static-form" method="post">
+    <form id="static-form1" method="post">
       <div class="form-userName">
           <label for="text1">Enter username:</label>
           <input type="text" class="form-control" id="text1" name="userName" placeholder="Enter Text" value="{{text1}}">
         </div>
+        <div class="usererror" id="usererror" hidden></div>
       <div class="form-password">
           <label for="text2">Enter password:</label>
           <input type="text" class="form-control" id="text2" name="password" placeholder="Enter Text" value="{{text2}}">
@@ -18,7 +19,7 @@
         </div>
 
         <div>
-        <input type="radio" id="recruiter" name="radioButton" value="Rcruiter">
+        <input type="radio" id="recruiter" name="radioButton" value="Recruiter">
         <label for="recruiter">Recruiter</label>
         </div>
 
@@ -40,7 +41,7 @@
       </div>
     </form>
     <p>OR</p>
-    <form id="static-form2" method="get">
+    <form id="static-form2" method="get" action = "/signup">
         <div class="form-group">
                 <button type="submit" class="btn btn-default">New Applicant Signup</button>
             </div>
