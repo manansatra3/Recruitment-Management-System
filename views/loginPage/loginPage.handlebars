@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-12">
+    <form id="static-form" method="post">
+      <div class="form-userName">
+          <label for="text1">Enter username:</label>
+          <input type="text" class="form-control" id="text1" name="userName" placeholder="Enter Text" value="{{text1}}">
+        </div>
+      <div class="form-password">
+          <label for="text2">Enter password:</label>
+          <input type="text" class="form-control" id="text2" name="password" placeholder="Enter Text" value="{{text2}}">
+        </div>
+
+
+        <div>
+        <input type="radio" id="applicant" name="applicant" value="Applicant"
+                checked>
+        <label for="applicant">Applicant</label>
+        </div>
+
+        <div>
+        <input type="radio" id="recruiter" name="recruiter" value="Rcruiter">
+        <label for="recruiter">Recruiter</label>
+        </div>
+
+        <div class="form-group">
+                <button type="submit" class="btn btn-default">Login</button>
+            </div>
+
+
+
+
+      
+      <div class="form-group hidden" id="error-container">
+        <div class="alert alert-danger text-goes-here">
+        </div>
+      </div>
+      <div class="form-group hidden" id="result-container">
+        <div class="alert alert-success text-goes-here">
+        </div>
+      </div>
+    </form>
+    <p>OR</p>
+    <form id="static-form2" method="get">
+        <div class="form-group">
+                <button type="submit" class="btn btn-default">New Applicant Signup</button>
+            </div>
+    </form>
+  </div>
+</div>
