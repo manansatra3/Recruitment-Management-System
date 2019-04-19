@@ -1,5 +1,7 @@
-const login = require("./login");
+const signupData = require("./signup");
+const applicantData = require("./applicantInformation");
 
 module.exports = {
-  login: login
+  signupData,
+  applicantData
 };
