@@ -9,7 +9,8 @@ const constructorMethod = app => {
     app.use("/signup", signupRoutes);
     app.use("/", loginRoutes);
     app.use("*", (req, res) => {
-        return res.redirect("/");
+        console.log("I was redirected");
+        // return res.redirect("/");
     });
   };
 

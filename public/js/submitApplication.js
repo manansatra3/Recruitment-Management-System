@@ -1,10 +1,4 @@
-const mongoCollections = require("./collections");
-const applicantDocuments = mongoCollections.applicantDocuments;
-const ObjectID = require('mongodb').ObjectID;
-const binaryMongo = require('mongodb').Binary;
-const fs = require('fs');
-
-async function checkFormValidation() {
+function checkFormValidation() {
     console.log ('here');
     // var firstName = document.getElementsByName('firstName')[0].nodeValue;
     // var lastName = document.getElementsByName('lastName')[0].nodeValue;
@@ -28,14 +22,4 @@ async function checkFormValidation() {
     //     alert('Enter Last Name');
     //     return;
     // }
-    var resume = document.getElementById('resume');
-    var coverLetter = document.getElementById('coverLetter');
-    var transcripts = document.getElementById('transcripts');
-    var extraDocuments = document.getElementById('extraDocuments');
-    var extraComments = document.getElementById('extraComments');
-    var data = fs.readFileSync(resume);
-    var insert_data = {};
-    insert_data.file_data= binaryMongo(data);
-    await applicantDocuments.insert(insert_data);
-    console.log("Inserted!");
 }
