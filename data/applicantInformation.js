@@ -12,7 +12,7 @@ module.exports = {
         const info = await information();
         //objId should be coming from the signup database where that Id is stored
         const objId = ObjectId(id);
-
+        //password should be bcrytped here so if hacked, it would be hard to decrypt
         let updatedInfo = {
             id: objId,
             name,
@@ -66,6 +66,10 @@ module.exports = {
         };
         await info.updateOne(query, updatedCommand);
         return await this.getApplicantById(id);
+    },
+    async getAllUsers(){
+        const info = await information();
+        return info.find({}).toArray();
     }
 
 }

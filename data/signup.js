@@ -1,5 +1,6 @@
 const mongoCollections = require("./collection");
 const signup = mongoCollections.signup;
+const bcrypt = require("bcrypt");
 
 module.exports ={
     /**
@@ -7,16 +8,26 @@ module.exports ={
      * @param {*} type employer or applicant
      * @param {*} username username they set 
      * @param {*} email validated email
-     * @param {*} password password they set
+     * @param {*} password password they set, 
      */
     async signup(type, username, email, password){
-        //errors
+        if ((!username) || (typeof username !== "string")){
+            throw `Error: ${username} is invalid`;
+        }
+        if ((!password) || (typeof password !== "string")){
+            throw `Error: ${password} is invalid`;
+        }
+        if ((!email) || (typeof email !== "string")){
+            throw `Error: ${email}is invalid`;
+        }
         const person = await signup();
         let newPerson = {
             type,
             username,
             email,
-            password
+            //this will bcrypt the password so it is harder to decrypt
+            password: bcrypt.hashSync(password,16)
+
         };
         const insert = await person.insertOne(newPerson);
         if(insert.insertedCount === 0){
