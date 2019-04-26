@@ -11,7 +11,6 @@ const constructorMethod = app => {
     app.use("/aftersignup", afterSignupRoutes)
     app.use("/", loginRoutes);
     app.use("*", (req, res) => {
-        console.log("I was redirected");
         // return res.redirect("/");
     });
   };

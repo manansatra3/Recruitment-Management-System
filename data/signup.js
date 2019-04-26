@@ -26,7 +26,7 @@ module.exports ={
             username,
             email,
             //this will bcrypt the password so it is harder to decrypt
-            password: bcrypt.hashSync(password,16)
+            password: bcrypt.hashSync(password,1)
 
         };
         const insert = await person.insertOne(newPerson);
