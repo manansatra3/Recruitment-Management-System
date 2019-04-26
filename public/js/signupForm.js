@@ -5,6 +5,8 @@ if (myForm) {
     //Get a reference to the text_input field
     const textInput = document.getElementById("username");
     const emailInput = document.getElementById("email")
+    const passwordInput = document.getElementById("password");
+    const confirmpasswordInput = document.getElementById("confirmpassword");
     //Add an event listener for the form submit
     myForm.addEventListener("submit", event => {
         //We need to prevent the default behavior of the form submit
@@ -83,6 +85,22 @@ if (myForm) {
 
             //then set the cursor focus to the input field
             $('#text_input').focus();
+        }
+
+
+
+
+
+
+        if(passwordInput.value)
+        {
+            $("#passworderror").hide();
+        }
+        else {
+            //If the user did not enter input, we show the error div and text
+            $("#passworderror").show();
+            $("#passworderror").html("You Need to supply a password!");
+
         }
 
     });
