@@ -170,5 +170,7 @@ if (myForm) {
             $("#confirmpassworderror").html("You Need to supply a password again!");
         }
 
+        myForm.submit()
+
     });
 }
