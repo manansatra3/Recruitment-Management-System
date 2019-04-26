@@ -55,7 +55,7 @@ if (myForm) {
 
         if(emailInput.value)
         {
-            console.log(emailInput.value);
+            //console.log(typeof(emailInput.value));
             $("#emailerror").hide();
             
             var regexp = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9\_]+){0,15}@[a-zA-Z0-9\_\-]+(\.[a-zA-Z0-9\_\-]+){0,4}$/;
@@ -94,13 +94,80 @@ if (myForm) {
 
         if(passwordInput.value)
         {
+            //console.log(typeof(passwordInput.value))
             $("#passworderror").hide();
+            if(passwordInput.value.length <6 || passwordInput.value.length >15)
+            {
+                $("#passworderror").show();
+                $("#passworderror").html("Password should be minimum 6 characters and maximum 15 characters!");
+                return
+                
+            }
+            var regexp2 = /^[a-zA-Z][a-zA-Z0-9!@#$%&*]+$/;
+            var regexp3 = /.*[0-9].*/;
+            if(passwordInput.value.search(regexp2) == -1)
+            {
+                $("#passworderror").show();
+                $("#passworderror").html("Password can only contain alphanumeric characters and special characters (!,@,#,$,%,&,*) and it should start with an alphabet!");
+                return
+            }
+            let numberMatchResult = passwordInput.value.match(/\d/g);
+            if(numberMatchResult == null) 
+            {
+                $("#passworderror").show();
+                $("#passworderror").html("Password should contain atleast one number");
+                return
+            }
+            let specialMatchResult = passwordInput.value.match(/[!@#$%&*]/g);
+           
+            if(specialMatchResult == null) 
+            {
+                $("#passworderror").show();
+                $("#passworderror").html("Password should contain atleast one special character !,@,#,$,%,&,*");
+                return
+            }
+
+            
+
+
+
+
+
+            //We then reset the form
+            $("#myForm").trigger('reset');
+            /*  you can also do this by just clearing the text input as shown below
+                if you want to reset all fields, use the reset example above
+                if you want to just clear certain form fields you can use the example below
+                $("#text_input").val('');
+            */
+
+            //then set the cursor focus to the input box
+            $('#text_input').focus();
+
+
         }
         else {
             //If the user did not enter input, we show the error div and text
             $("#passworderror").show();
             $("#passworderror").html("You Need to supply a password!");
 
+        }
+
+
+
+        if(confirmpasswordInput.value)
+        {
+            $("#confirmpassworderror").hide();
+            if(passwordInput.value !== confirmpasswordInput.value)
+            {
+                $("#confirmpassworderror").show();
+                $("#confirmpassworderror").html("Password does not match");
+            }
+        }
+        else{
+            //If the user did not enter input, we show the error div and text
+            $("#confirmpassworderror").show();
+            $("#confirmpassworderror").html("You Need to supply a password again!");
         }
 
     });
