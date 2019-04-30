@@ -19,5 +19,6 @@ const getCollectionFn = collection => {
 module.exports = {
   signup: getCollectionFn("signup"),
   information: getCollectionFn("information"),
-  applicantDocuments: getCollectionFn("applicantDocuments")
+  applicantDocuments: getCollectionFn("applicantDocuments.files"),
+  users: getCollectionFn("user")
 };
