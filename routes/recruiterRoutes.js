@@ -32,6 +32,7 @@ router.post("/viewApplications/:jobId/:userId", async(req, res)=>{
         res.setHeader('Content-Disposition', `attachment; filename="user-${req.params.userId}.zip"`)
         archiveStream.pipe(res)
         archiveStream.finalize()
+        res.sendStatus(200);
     } catch (err) {
         console.error(err);
         res.status(500).json({message: err.toString()})
