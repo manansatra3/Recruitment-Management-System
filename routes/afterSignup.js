@@ -23,7 +23,8 @@ router.post("/", async (req, res) => {
     }
     //console.log(signupData);
     const createdUser = await signupCurrent.signup("Applicant",req.body.userName,req.body.email,req.body.password)
-    res.status(200).json({message:"go home"})
+    res.status(200).render("loginPage/aftersignup", {});
+    //res.status(200).json({message:"go home"})
   }
   catch(error)
   {
