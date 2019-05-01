@@ -23,7 +23,7 @@ if (myForm) {
             {
                 $("#usererror").show();
                 $("#usererror").html("User name should be minimum 5 characters and maximum 15 characters!");
-                return
+                return false;
                 
             }
             var regexp = /^[a-zA-Z][a-zA-Z0-9-_]+$/;
@@ -31,7 +31,7 @@ if (myForm) {
             {
                 $("#usererror").show();
                 $("#usererror").html("User name can only contain alphanumeric characters and underscore and it should start with an alphabet!");
-                return
+                return false;
             }
 
             //We then reset the form
@@ -48,23 +48,22 @@ if (myForm) {
             //If the user did not enter input, we show the error div and text
             $("#usererror").show();
             $("#usererror").html("You Need to supply an user name!");
-
             //then set the cursor focus to the input field
             $('#text_input').focus();
+            return false;
         }
 
         if(emailInput.value)
         {
             //console.log(typeof(emailInput.value));
             $("#emailerror").hide();
-            
-            var regexp = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9\_]+){0,15}@[a-zA-Z0-9\_\-]+(\.[a-zA-Z0-9\_\-]+){0,4}$/;
-            if(emailInput.value.search(regexp) == -1)
+            var regexp2 = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9\_]+){0,15}@[a-zA-Z0-9\_\-]+(\.[a-zA-Z0-9\_\-]+){0,4}$/;
+            if(emailInput.value.search(regexp2) == -1)
             {   
                 console.log("hello");
                 $("#emailerror").show();
                 $("#emailerror").html("Invalid Email ID!");
-                return
+                return false;
             }
         
 
@@ -81,10 +80,11 @@ if (myForm) {
         } else {
             //If the user did not enter input, we show the error div and text
             $("#emailerror").show();
-            $("#emailerror").html("You Need to supply an user name!");
+            $("#emailerror").html("You Need to supply a email id!");
 
             //then set the cursor focus to the input field
             $('#text_input').focus();
+            return false;
         }
 
 
@@ -100,23 +100,23 @@ if (myForm) {
             {
                 $("#passworderror").show();
                 $("#passworderror").html("Password should be minimum 6 characters and maximum 15 characters!");
-                return
+                return false;
                 
             }
-            var regexp2 = /^[a-zA-Z][a-zA-Z0-9!@#$%&*]+$/;
-            var regexp3 = /.*[0-9].*/;
-            if(passwordInput.value.search(regexp2) == -1)
+            var regexp3 = /^[a-zA-Z][a-zA-Z0-9!@#$%&*]+$/;
+            var regexp4 = /.*[0-9].*/;
+            if(passwordInput.value.search(regexp3) == -1)
             {
                 $("#passworderror").show();
                 $("#passworderror").html("Password can only contain alphanumeric characters and special characters (!,@,#,$,%,&,*) and it should start with an alphabet!");
-                return
+                return false;
             }
             let numberMatchResult = passwordInput.value.match(/\d/g);
             if(numberMatchResult == null) 
             {
                 $("#passworderror").show();
                 $("#passworderror").html("Password should contain atleast one number");
-                return
+                return false;
             }
             let specialMatchResult = passwordInput.value.match(/[!@#$%&*]/g);
            
@@ -124,7 +124,7 @@ if (myForm) {
             {
                 $("#passworderror").show();
                 $("#passworderror").html("Password should contain atleast one special character !,@,#,$,%,&,*");
-                return
+                return false;
             }
 
             
@@ -150,7 +150,7 @@ if (myForm) {
             //If the user did not enter input, we show the error div and text
             $("#passworderror").show();
             $("#passworderror").html("You Need to supply a password!");
-
+            return false;
         }
 
 
@@ -162,14 +162,15 @@ if (myForm) {
             {
                 $("#confirmpassworderror").show();
                 $("#confirmpassworderror").html("Password does not match");
+                return false;
             }
         }
         else{
             //If the user did not enter input, we show the error div and text
             $("#confirmpassworderror").show();
             $("#confirmpassworderror").html("You Need to supply a password again!");
+            return false;
         }
-
         myForm.submit()
 
     });
