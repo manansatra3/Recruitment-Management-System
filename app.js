@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const static = express.static(__dirname + "/public");
-
+const session = require("express-session")
 const configRoutes = require("./routes");
 
 const exphbs = require("express-handlebars");
@@ -46,6 +46,16 @@ app.use(rewriteUnsupportedBrowserMethods);
 app.engine("handlebars",handlebarsInstance.engine);
 app.set("view engine","handlebars");
 app.set("views", viewPath);
+
+
+app.use(session({
+  name: "AuthCookie",
+  secret : "RMS project",
+  resave: false,
+  saveUninitialized: true
+
+}))
+
 configRoutes(app);
 
 app.listen(3000, () => {

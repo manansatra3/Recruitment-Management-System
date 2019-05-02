@@ -62,6 +62,20 @@ module.exports ={
             throw "No person with that id";
         }
         return findPerson;
-    }
+    },
 
+
+
+    async getUserbyname(userName){
+        if(!userName)
+        {
+            throw "User name not provided"
+        }
+        const person = await users();
+        const findPerson = await person.findOne({username:userName});
+        // if(findPerson === null){
+        //     throw "No person with that id";
+        // }
+        return findPerson;
+    }
 }

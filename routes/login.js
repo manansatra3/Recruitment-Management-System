@@ -2,10 +2,64 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 const users = data.usersData;
+const bcrypt = require("bcrypt")
 
 router.get("/", async (req, res) => {
   res.render("loginPage/loginPage", {});
 });
+router.post("/", async (req, res, next) => {
+  
+  var requestBody = req.body
+  var userName= requestBody.userName
+  var password = requestBody.password
+  console.log(userName)
+  console.log(password)
+  try{
+    if(userName === ""){
+      res.status(403).render("loginPage/loginPage",
+      { hasError : true,
+        error : "The user name should not be empty !"});
+        return;
+    }
 
+    if(password === ""){
+      res.status(403).render("loginPage/loginPage",
+      { hasError : true,
+        error : "The password should not be empty !"});
+        return;
+    }
+    const result = await users.getUserbyname(userName)
+    console.log("hhhh")
+    //console.log(result)
+    if( result === null){
+      res.status(403).render("loginPage/loginPage",
+      { hasError : true,
+        error : "Invalid user name or password!"});
+        return;
+    }
+    const compareResult = await bcrypt.compare(password,result.password)
+    //console.log(compareResult)
+    console.log("hahah")
+    const 
+    if(result != null && compareResult==true ){
+      req.session.authority = true
+      req.session.userID = result._id
+      req.session.userName = result.username
+      req.session.userType = result.type
+      res.status(305).redirect("/afterlogin")
+      return;
+    }
+    res.status(403).render("loginPage/loginPage",
+      { hasError : true,
+        error : "Invalid user name or password!"});
+        return;
+
+  }
+  catch(error)
+  {
+
+  }
+  //res.render("loginPage/loginPage", {});
+});
 
 module.exports = router;

@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
+    res.status(200).json({message:"go home"})
 
     // const usersData = req.body;
-    // try{
+    // tryy
+    
     //   if(req.body === undefined){
     //     res.status(400).json({message : "There isn't body in the request"})
     //   }
