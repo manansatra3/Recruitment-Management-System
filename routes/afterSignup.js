@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
-const  signupCurrent = data.signupData;
+const  usersDataHandler = data.usersData;
 //const signupCurrent = signupCurrent.signup;
 
 
@@ -21,10 +21,9 @@ router.post("/", async (req, res) => {
     if(typeof(req.body.password) !== "string"){
       res.status(400).json({message : "Password should be string"})
     }
-    //console.log(signupData);
-    const createdUser = await signupCurrent.signup("Applicant",req.body.userName,req.body.email,req.body.password)
+    var createdUser = await usersDataHandler.signup("Applicant",req.body.userName,req.body.email,req.body.password);
+  
     res.status(200).render("loginPage/aftersignup", {});
-    //res.status(200).json({message:"go home"})
   }
   catch(error)
   {

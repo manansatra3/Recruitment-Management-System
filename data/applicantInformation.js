@@ -1,7 +1,7 @@
 const mongoCollections = require("./collection");
 const ObjectId = require("mongodb").ObjectID;
 const information = mongoCollections.information;
-const signupData = require("./signup");
+const signupData = require("./users");
 
 module.exports = {
     /**

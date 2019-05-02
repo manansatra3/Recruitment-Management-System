@@ -1,9 +1,9 @@
-const signupData = require("./signup");
+const usersData = require("./users");
 const applicantData = require("./applicantInformation");
 const submitApplication = require("./submitApplication");
 const getApplicantDocuments = require('./getApplicantDocuments')
 module.exports = {
-  signupData,
+  usersData,
   applicantData,
   submitApplication,
   getApplicantDocuments

@@ -1,5 +1,5 @@
 const mongoCollections = require("./collection");
-const signup = mongoCollections.signup;
+const  users= mongoCollections.users;
 const bcrypt = require("bcrypt");
 
 module.exports ={
@@ -20,7 +20,7 @@ module.exports ={
         if ((!email) || (typeof email !== "string")){
             throw `Error: ${email}is invalid`;
         }
-        const person = await signup();
+        const person = await users();
         let newPerson = {
             type,
             username,
@@ -56,7 +56,7 @@ module.exports ={
         if(!id){
             throw "Error: no id was provided";
         }
-        const person = await signup();
+        const person = await users();
         const findPerson = await person.findOne({_id: id});
         if(findPerson === null){
             throw "No person with that id";
