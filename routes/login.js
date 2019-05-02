@@ -12,8 +12,8 @@ router.post("/", async (req, res, next) => {
   var requestBody = req.body
   var userName= requestBody.userName
   var password = requestBody.password
-  console.log(userName)
-  console.log(password)
+  // console.log(userName)
+  // console.log(password)
   try{
     if(userName === ""){
       res.status(403).render("loginPage/loginPage",
@@ -29,8 +29,6 @@ router.post("/", async (req, res, next) => {
         return;
     }
     const result = await users.getUserbyname(userName)
-    console.log("hhhh")
-    //console.log(result)
     if( result === null){
       res.status(403).render("loginPage/loginPage",
       { hasError : true,
