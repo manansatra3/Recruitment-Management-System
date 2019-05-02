@@ -38,9 +38,6 @@ router.post("/", async (req, res, next) => {
         return;
     }
     const compareResult = await bcrypt.compare(password,result.password)
-    //console.log(compareResult)
-    console.log("hahah")
-    const 
     if(result != null && compareResult==true ){
       req.session.authority = true
       req.session.userID = result._id
