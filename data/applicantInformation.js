@@ -1,15 +1,15 @@
 const mongoCollections = require("./collection");
 const ObjectId = require("mongodb").ObjectID;
-const information = mongoCollections.information;
+const applicantInfo = mongoCollections.applicantInfo;
 const signupData = require("./users");
 
 module.exports = {
     /**
-     *update the applicant information when they sign up
+     *update the applicant applicantInfo when they sign up
      *
      */
-    async applicantInformation(id, name, email, phoneNumber, education, work){
-        const info = await information();
+    async applicantapplicantInfo(id, name, email, phoneNumber, education, work){
+        const info = await aapplicantInfo();
         //objId should be coming from the signup database where that Id is stored
         const objId = ObjectId(id);
         let updatedInfo = {
@@ -32,7 +32,7 @@ module.exports = {
         if(!id){
             throw "Error: no id was provided";
         }
-        const info = await information();
+        const info = await applicantInfo();
         const applicant = info.findOne({_id: id});
         if(!applicant){
             throw `Error: no Applicant was found with this id: ${id}`
@@ -40,7 +40,7 @@ module.exports = {
         return applicant;
     },
     async updateApplicantInfo(id, updatedInfo){
-        const info = await information();
+        const info = await applicantInfo();
         const updated = {};
         if(updatedInfo.name){
             updated.name = updatedInfo.name;
@@ -67,8 +67,16 @@ module.exports = {
         return await this.getApplicantById(id);
     },
     async getAllUsers(){
-        const info = await information();
+        const info = await applicantInfo();
         return info.find({}).toArray();
+    },
+
+    async removeApplicant(id){
+        if(!id){
+            throw "Error: no id was provided";
+        }
+        const info = await applicantInfo();
+        return await info.deleteOne({_id: id});
     }
 
 }
