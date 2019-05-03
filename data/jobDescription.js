@@ -1,5 +1,6 @@
 const mongoCollections = require("./collection");
 const jobDescription = mongoCollections.jobDescrption;
+const { ObjectId } = require('mongodb')
 
 module.exports = {
     //please remember to add employerID before job title in the function parameter in thle line below
@@ -26,10 +27,11 @@ module.exports = {
         if(!id){
             throw "Error: no id was provided";
         }
+        const parsedId = ObjectId.createFromHexString(id);
         const info = await jobDescription();
-        const job = info.findOne({_id: id});
+        const job = info.findOne({_id: parsedId});
         if(!job){
-            throw `Error: no Applicant was found with this id: ${id}`
+            throw `Error: no Applicant was found with this id: ${parsedId}`
         }
         return job;
     },

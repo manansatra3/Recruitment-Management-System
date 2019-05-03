@@ -18,6 +18,7 @@ const constructorMethod = app => {
     app.use("/afterPost",afterPostRoutes)
     app.use("/viewJobDescription", viewJobDescriptionRoutes)
     app.use("*", (req, res) => {
+      res.status(200).json({message:"no route there"})
         // return res.redirect("/");
     });
   };

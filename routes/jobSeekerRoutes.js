@@ -35,29 +35,45 @@ router.get('/submitApplication', (req, res) => {
 //     data.submitApplication.insertDocumentsToDatabaseWithGridFS(req, res);
 // });
 
-// ---------multiple file--------------
-router.post('/submitApplication', async (req, res) => {
-    await upload.array('docs')(req, res, async (err) => {
-        if(err) {
-            // error
-            res.status(400).render('errorPage.handlebars',{e:{statusCode:"400",error:"only doc docx pdf allowed", redirect: "/applicant/submitApplication"}});
-            return
-        }
-        console.log("in post submitApplication");
-        // console.log(req.files) 
-        var extraComments = req.body.extraComments;
-        var metadata = { extraComments: extraComments };
-        console.log(extraComments);
-        try {
-            for (let file of req.files) {
-                await data.submitApplication.insertDocumentsToDatabaseWithGridFS(file, metadata);
-            }
-            res.json({ msg: 'finished' })
-        } catch (e) {
-            res.status(500).json({ msg: 'error', err: e })
-        }
-    })
+router.post('/submitApplication/:jobId?',async (req,res) => {
+    console.log(req.session);
+    //console.log(req.session.userId);
+    console.log(req.query.jobId);
+res.render('submitApplication')
 });
+
+
+
+
+
+
+
+
+
+
+// ---------multiple file--------------
+// router.post('/submitApplication', async (req, res) => {
+//     await upload.array('docs')(req, res, async (err) => {
+//         if(err) {
+//             // error
+//             res.status(400).render('errorPage.handlebars',{e:{statusCode:"400",error:"only doc docx pdf allowed", redirect: "/applicant/submitApplication"}});
+//             return
+//         }
+//         console.log("in post submitApplication");
+//         // console.log(req.files) 
+//         var extraComments = req.body.extraComments;
+//         var metadata = { extraComments: extraComments };
+//         console.log(extraComments);
+//         try {
+//             for (let file of req.files) {
+//                 await data.submitApplication.insertDocumentsToDatabaseWithGridFS(file, metadata);
+//             }
+//             res.json({ msg: 'finished' })
+//         } catch (e) {
+//             res.status(500).json({ msg: 'error', err: e })
+//         }
+//     })
+// });
 
 router.get("/profile", (req, res) => {
     res.render('profileSubmission.handlebars');
