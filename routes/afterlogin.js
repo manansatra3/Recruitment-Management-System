@@ -3,8 +3,14 @@ const router = express.Router();
 const data = require("../data");
 
 router.get("/", async (req, res) => {
-    res.status(200).json({message:"go home"})
-
+    //res.status(200).json({message:"go home"})
+    if(req.session.authority == true)
+    {
+        if(req.session.userType == "Applicant")
+        {
+            res.status(200).render("./applicantViewJobPostings")
+        }
+    }
     // const usersData = req.body;
     // tryy
     
