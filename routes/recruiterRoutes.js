@@ -11,7 +11,7 @@ router.get("/postNewJob",(req,res)=>{
 });
 
 router.get("/viewApplications", (req, res)=>{
-    res.send({"message":"christina implement the view applications page here on this route"})
+    res.render('viewApplications.handlebars');
 });
 
 router.get("/viewApplications/:jobId/:userId", async (req, res)=>{

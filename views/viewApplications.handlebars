@@ -1,0 +1,27 @@
+<h2>All Applications</h2>
+
+<br>
+
+<table>
+    <thead>
+        <th>
+            Applicant Name
+        </th>
+        <th>
+            Information
+        </th>
+    </thead>
+
+    <body>
+        {{#each Applicant}}
+        <tr>
+            <td>
+                {{this.name}}
+            </td>
+            <td>
+                {{this.Applications}}
+            </td>
+        </tr>
+         {{/each}}
+    </body>
+</table>
