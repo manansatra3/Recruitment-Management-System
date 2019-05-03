@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
+const jobDescription = data.jobDescription
 
 router.get("/", async (req, res) => {
     //res.status(200).json({message:"go home"})
@@ -8,7 +9,12 @@ router.get("/", async (req, res) => {
     {
         if(req.session.userType == "Applicant")
         {
-            res.status(200).render("./applicantViewJobPostings")
+            const result = await jobDescription.getAllJobs();
+            console.log(result)
+            res.status(200).render("./applicantViewJobPostings",
+            {
+              result : result
+            })
         }
     }
     // const usersData = req.body;

@@ -1,1 +1,12 @@
-<p>hello</p>
+<p>Welcome Applicant</p>
+<p> Open job listings</p>
+<ul class ="job-list">
+    {{#each result}}
+    <li class = "eachJob" onclick="">
+        <form action="/viewJobDescription/{{_id}}" method="get" id={{_id}} class={{_id}}"form">
+        <label for={{_id}}"form" >{{jobTitle}}</label>  
+        <button type="submit" form={{_id}} value="Submit"> View</button>    
+         </form>
+    </li>
+    {{/each}}
+</ul>

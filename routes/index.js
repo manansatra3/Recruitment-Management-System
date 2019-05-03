@@ -5,6 +5,7 @@ const afterSignupRoutes = require("./afterSignup");
 const recruiterRoutes = require('./recruiterRoutes');
 const afterloginRoutes = require('./afterlogin')
 const afterPostRoutes = require('./afterPost')
+const viewJobDescriptionRoutes = require('./viewJobDescription')
 
 const constructorMethod = app => {
     app.use("/applicant", jobSeekerRoutes);
@@ -15,6 +16,7 @@ const constructorMethod = app => {
     app.use("/login", loginRoutes)
     app.use("/", loginRoutes);
     app.use("/afterPost",afterPostRoutes)
+    app.use("/viewJobDescription", viewJobDescriptionRoutes)
     app.use("*", (req, res) => {
         // return res.redirect("/");
     });

@@ -5,7 +5,7 @@ module.exports = {
     //please remember to add employerID before job title in the function parameter in thle line below
     async createjobDescription(jobTitle, jobType, jobLocation, experienceLevel, jobResponsibilities)
     {
-        console.log("hi")
+        //console.log("hi")
         const jobpost = await jobDescription();
         const jobSummary = {
             //employerId : employerId,
@@ -33,4 +33,10 @@ module.exports = {
         }
         return job;
     },
+
+    // function to get all jobs in the jobDescription collection
+    async getAllJobs(){
+        const info = await jobDescription();
+        return info.find({}).toArray();
+    }
 }
