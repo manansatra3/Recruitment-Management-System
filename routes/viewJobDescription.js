@@ -7,8 +7,6 @@ router.post("/:jobId?", async (req, res) => {
     //console.log(req.query.jobId);
     //const parsedId = ObjectId.createFromHexString(id);
     const result = await jobDescription.getJobById(req.query.jobId)
-    console.log("hello")
-    console.log(result)
     res.status(200).render("applicantViewJobDescription",{
         result : result
     })
