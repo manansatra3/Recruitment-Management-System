@@ -5,6 +5,6 @@
 <p>Job Location: {{result.jobLocation}}</p>
 <p>Experience level: {{result.experiencelevel}}</p>  
 <p>Job Responsibilities: {{result.jobResponsibilities}}</p>
-<form action="/applicant/submitApplication?jobId={{result._id}}" method="POST" id={{result._id}} class={{result._id}}"form"> 
+<form action="/applicant/submitApplication/{{result._id}}" method="GET" id={{result._id}} class={{result._id}}"form"> 
         <button type="submit" form={{result._id}} value="Submit"> Apply</button>    
 </form>

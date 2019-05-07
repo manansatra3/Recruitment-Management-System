@@ -1,5 +1,6 @@
 const mongoCollections = require("./collection");
 const applicantDocuments = mongoCollections.applicantDocuments;
+// const jobsAndDocs = mongoCollections.jobsAndDocs;
 const connection = require('./connection');
 const ObjectID = require('mongodb').ObjectID;
 const { GridFSBucket : Grid } = require('mongodb')
@@ -29,7 +30,7 @@ const multer = require('multer')
 
 
 // ----------------- with GridFS ----------------
-function insertDocumentsToDatabaseWithGridFS(file, metadata) {
+async function insertDocumentsToDatabaseWithGridFS(file, metadata) {
     return new Promise(async (resolve, reject) => {
         try {
             // Connect to the db
@@ -40,7 +41,37 @@ function insertDocumentsToDatabaseWithGridFS(file, metadata) {
                 uploadStream.end();
             });
             uploadStream.on('error', () => reject("Unable to add file to GridFS"))
-            uploadStream.on('finish', () => resolve(true))
+            uploadStream.on('finish', async (data) =>{
+                console.log(data._id);
+                console.log("uploaded")
+                // const applicantDocumentsCollection = await applicantDocuments();
+                // var newDocId = await applicantDocumentsCollection.findOne();
+                // await db.collection('applicantDocuments.files', async function(err, collection) {
+                //     await collection
+                //       .find()
+                //       .sort({$natural: -1})
+                //       .limit(1)
+                //       .next()
+                //       .then(
+                //         function(doc) {
+                //             console.log(doc);
+                //             console.log(typeof doc._id);
+                //             const newDocId = doc._id;
+                //         },
+                //         function(err) {
+                //           console.log('Error:', err);
+                //         }
+                //       );
+                //   });
+                //   const jobsAndDocsCollection = await jobsAndDocs();
+                  
+                // console.log(newDocId._id);
+                
+                // resolve(true)
+                // console.log(newDocId)
+                resolve (data._id);
+            })
+            
         } catch(e) {
             reject(e)
         }
