@@ -40,7 +40,7 @@ router.get('/submitApplication/:jobId',async (req,res) => {
     // console.log(req.session);
     // console.log(req.session.userId);
     // console.log(req.params.jobId);
-res.render('submitApplication')
+res.render('submitApplication', {jobId:req.params.jobId })
 });
 
 // ---------multiple file--------------
@@ -52,34 +52,40 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
     //         return
     //     }
         console.log("in post submitApplication");
-        console.log(req.files.length)
+        const currentUser = req.session.userID;
+        const jobId = req.params.jobId;
+        // console.log(req.files.length)
         var extraComments = req.body.extraComments;
         var metadata = { extraComments: extraComments };
-        console.log(extraComments);
+        // console.log(extraComments);
         var allDocIds=[]
         try {
             for (var file of req.files) {
                 // console.log(`file: ${req.files[i]}`)
                 const newDocId = await data.submitApplication.insertDocumentsToDatabaseWithGridFS(file, metadata);
-                console.log(newDocId)
+                // console.log(newDocId)
                 allDocIds.push(newDocId)
             }
-            console.log(`Current user's userid is ${req.session.userID}`)
-            const userId = req.session.userID;
-            console.log(allDocIds);
+            console.log(`Current user's userId is ${currentUser}`)
+            console.log(`Ids of all documents uploaded by userId ${currentUser} for jobId ${jobId} are ${allDocIds}`);
             const jobsAndDocsCollection = await jobsAndDocs();
-            const exist = await jobsAndDocsCollection.findOne({userId:ObjectID(userId)})
-            if (exist) {
-                await jobsAndDocsCollection.updateOne({userId:ObjectID(userId)},{ $set: {[req.params.jobId]:allDocIds}});
+            console.log("Collection hunting done");
+            const exist = await jobsAndDocsCollection.findOne({userId:currentUser})
+            console.log(`finding done with result of ${exist}`)
+            if (exist!==null) {
+                console.log("User already exists in jobsAndDocs")
+                await jobsAndDocsCollection.updateOne({_id: exist._id},{ $set: {[req.params.jobId]:allDocIds}});
             }
             else {
+                // console.log(`UserId ${userId} does not exists in jobsAndDocs collection of Mongo. So creating a new document!`);
                 const toBeInsertedInDb = {
-                    userId: req.session.userID,
+                    userId: currentUser,
                     [req.params.jobId]: allDocIds
                 };
                 await jobsAndDocsCollection.insertOne(toBeInsertedInDb);
             }
-            res.json({ msg: 'finished' })
+            console.log("Rendering afterSubmitApplication")
+            res.render('afterSubmitApplication.handlebars')
         } catch (e) {
             res.status(500).json({ msg: 'error', err: e })
         }
