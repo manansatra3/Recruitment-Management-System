@@ -22,5 +22,6 @@ module.exports = {
   employerInfo: getCollectionFn("employerInfo"),
   applicantDocuments: getCollectionFn("applicantDocuments.files"),
   users: getCollectionFn("users"),
-  jobDescrption: getCollectionFn("jobDescription")
+  jobDescrption: getCollectionFn("jobDescription"),
+  jobsAndDocs: getCollectionFn("jobsAndDocs")
 };
