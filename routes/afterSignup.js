@@ -21,9 +21,18 @@ router.post("/", async (req, res) => {
     if(typeof(req.body.password) !== "string"){
       res.status(400).json({message : "Password should be string"})
     }
+    var checkUserExists = await usersDataHandler.getUserbyname(req.body.userName)
+    if(checkUserExists == null)
+    {
     var createdUser = await usersDataHandler.signup("Applicant",req.body.userName,req.body.email,req.body.password);
-  
     res.status(200).render("loginPage/aftersignup", {});
+  }
+    else{
+      res.render("loginPage/signup",{
+        hasError: true,
+        error: "User name is already taken"
+      })
+    }
   }
   catch(error)
   {

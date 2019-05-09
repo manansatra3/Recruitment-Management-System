@@ -6,7 +6,9 @@
           <input type="text" class="form-control" id="username" name="userName" placeholder="Enter Text" value="{{username}}">
         </div>
         <div class="usererror" id="usererror" hidden></div>
-
+      {{#if hasError}}
+        <p class = "logineError">{{error}}</p>
+      {{/if}}
     <div class="form-email">
           <label for="email">Enter email id:</label>
           <input class="form-control" id="email" name="email" placeholder="Enter Text" type="email" value="{{email}}">
