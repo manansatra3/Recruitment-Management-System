@@ -3,7 +3,6 @@ const router = express.Router();
 const data = require("../data");
 const multer = require('multer');
 const path = require('path');
-<<<<<<< HEAD
 const info = data.applicantData;
 
 // const upload = multer()
@@ -22,28 +21,6 @@ const upload = multer({ //multer settings
         }
     }
 })
-=======
-const mongoCollections = require("./../data/collection");
-const ObjectID = require('mongodb').ObjectID;
-// const applicantDocuments = mongoCollections.applicantDocuments;
-const jobsAndDocs = mongoCollections.jobsAndDocs;
-const upload = multer()
-// const upload = multer({ //multer settings
-//     fileFilter: function (req, file, callback) {
-//         var ext = path.extname(file.originalname);
-//         if (ext !== '.doc' && ext !== '.docx' && ext !== '.pdf') {
-//             return callback(new Error('Only doc, docx and pdf are allowed'))
-//             // router.get('/error', (req, res)=>{
-//             // res.render('errorPage.handlebars',{e:{statusCode:"badinput",error:"only doc docx pdf allowed"}});
-//             // });
-//             // callback(err)
-//         }
-//         else {
-//             callback(null, true)
-//         }
-//     }
-// })
->>>>>>> 85bfda0eb3a70289f51e6105c35f47269d6c246e
 
 
 // ---------single file--------------

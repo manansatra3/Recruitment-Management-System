@@ -6,10 +6,9 @@ module.exports = {
      *update the applicant applicantInfo when they sign up
      *
      */
-    async applicantapplicantInfo(id, firstName, lastName, email, phoneNumber, address, currentEducation, previousEducation, currentWork, previousWork){
+    async applicantapplicantInfo(firstName, lastName, email, phoneNumber, address, currentEducation, previousEducation, currentWork, previousWork){
         const info = await applicantInfo();
         let updatedInfo = {
-            id,
             name: {
                 firstName,
                 lastName
