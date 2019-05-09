@@ -20,18 +20,18 @@ module.exports = {
         if(insert.insertedCount === 0){
             throw "Could not add job description";
         }
-console.log(typeof insert.insertedId)
+//console.log(typeof insert.insertedId)
         return await this.getJobById(insert.insertedId);
     },
     async getJobById(id){
         if(!id){
             throw "Error: no id was provided";
         }
-        console.log(typeof id)
-        //const parsedId = ObjectId.createFromHexString(id);
-        console.log(typeof parseId)
+        //console.log(typeof id)
+        const parsedId = ObjectId.createFromHexString(id.toString());
+        //console.log(typeof parsedId)
         const info = await jobDescription();
-        const job = info.findOne({_id: id});
+        const job = info.findOne({_id: parsedId});
         if(!job){
             throw `Error: no Applicant was found with this id: ${parsedId}`
         }
@@ -40,6 +40,7 @@ console.log(typeof insert.insertedId)
 
     // function to get all jobs in the jobDescription collection
     async getAllJobs(){
+        //console.log("hi")
         const info = await jobDescription();
         return info.find({}).toArray();
     }
