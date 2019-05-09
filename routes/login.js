@@ -12,6 +12,7 @@ router.post("/", async (req, res, next) => {
   var requestBody = req.body
   var userName= requestBody.userName
   var password = requestBody.password
+  var userType = requestBody.radioButton
   // console.log(userName)
   // console.log(password)
   try{
@@ -36,7 +37,7 @@ router.post("/", async (req, res, next) => {
         return;
     }
     const compareResult = await bcrypt.compare(password,result.password)
-    if(result != null && compareResult==true ){
+    if(result != null && compareResult==true && userType==result.type){
       req.session.authority = true
       req.session.userID = result._id
       req.session.userName = result.username
@@ -44,6 +45,7 @@ router.post("/", async (req, res, next) => {
       res.status(305).redirect("/afterlogin")
       return;
     }
+
     res.status(403).render("loginPage/loginPage",
       { hasError : true,
         error : "Invalid user name or password!"});
