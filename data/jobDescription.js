@@ -20,16 +20,18 @@ module.exports = {
         if(insert.insertedCount === 0){
             throw "Could not add job description";
         }
-
+console.log(typeof insert.insertedId)
         return await this.getJobById(insert.insertedId);
     },
     async getJobById(id){
         if(!id){
             throw "Error: no id was provided";
         }
-        const parsedId = ObjectId.createFromHexString(id);
+        console.log(typeof id)
+        //const parsedId = ObjectId.createFromHexString(id);
+        console.log(typeof parseId)
         const info = await jobDescription();
-        const job = info.findOne({_id: parsedId});
+        const job = info.findOne({_id: id});
         if(!job){
             throw `Error: no Applicant was found with this id: ${parsedId}`
         }
