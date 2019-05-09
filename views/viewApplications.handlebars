@@ -1,7 +1,7 @@
 <p>Welcome Recruiter</p>
 <p>View all Applications</p>
 <ul class ="applications-list">
-    {{#each candidate}}
+    {{#each archiveStream}}
     <li class = "eachJob" onclick="">
         <form action="/getApplicantDocuments={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
         <label for={{_id}}"form" >{{jobTitle}}</label>  

@@ -7,20 +7,24 @@ router.get("/", async (req, res) => {
     //res.status(200).json({message:"go home"})
     if(req.session.authority == true)
     {
-        if(req.session.userType == "Applicant")
+        if(req.session.userType === "Applicant")
         {
             const result = await jobDescription.getAllJobs();
             console.log(result)
             console.log(req.session)
             res.status(200).render("./applicantViewJobPostings",
             {
-              result : result
+              result : result,
+              logoutOption: true
             })
             return
         }
-        if(req.session.userType == "Recruiter")
+        if(req.session.userType === "Recruiter")
         {
-            res.status(200).render("./recruiterPostOrViewPage");
+            res.status(200).render("./recruiterPostOrViewPage",
+            {
+                logoutOption: true
+            });
             return
         }
     }

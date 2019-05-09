@@ -3,15 +3,21 @@ const router = express.Router();
 const data = require("../data");
 
 router.get('/postOrView', async (req, res)=>{
-    res.render('recruiterPostOrViewPage.handlebars');
+    res.render('recruiterPostOrViewPage.handlebars', {
+        logoutOption: true
+    });
 });
 
 router.get("/postNewJob",(req,res)=>{
-    res.render('postNewJob.handlebars');
+    res.render('postNewJob.handlebars', {
+        logoutOption: true
+    });
 });
 
 router.get("/viewApplications", (req, res)=>{
-    res.render('viewApplications.handlebars');
+    res.render('viewApplications.handlebars', {
+        logoutOption: true
+    });
 });
 
 router.get("/viewApplications/:jobId/:userId", async (req, res)=>{

@@ -36,7 +36,7 @@ router.post("/", async (req, res, next) => {
         error : "Invalid user name or password!"});
         return;
     }
-    const compareResult = await bcrypt.compare(password,result.password)
+    const compareResult = await bcrypt.compare(password,result.password);
     if(result != null && compareResult==true && userType==result.type){
       req.session.authority = true
       req.session.userID = result._id

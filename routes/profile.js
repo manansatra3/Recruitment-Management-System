@@ -16,10 +16,13 @@ router.post("/", async (req, res) => {
     // }
     try {
         const addInfo = await info.applicantapplicantInfo(applicantInfo.firstName, applicantInfo.lastName, applicantInfo.email, applicantInfo.phoneNumber,
-             applicantInfo.address, applicantInfo.currentEducation, applicantInfo.previousEducation,
+             applicantInfo.currentEducation, applicantInfo.previousEducation,
              applicantInfo.currentWork, applicantInfo.previousWork);
         res.json(addInfo);
-        res.status(305).render("/viewJobDescription");
+        res.status(305).render("/viewJobDescription", 
+        {
+            logoutOption: true
+        });
     } catch (e) {
       res.sendStatus(500);
       return;

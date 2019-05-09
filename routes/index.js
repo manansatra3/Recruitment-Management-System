@@ -7,12 +7,14 @@ const afterloginRoutes = require('./afterlogin')
 const afterPostRoutes = require('./afterPost')
 const viewJobDescriptionRoutes = require('./viewJobDescription');
 const profileRoute = require('./profile');
+const logOutRoute = require('./logout');
 
 const constructorMethod = app => {
     app.use("/applicant", jobSeekerRoutes);
     app.use("/profile", profileRoute);
     app.use("/employer", recruiterRoutes);
     app.use("/signup", signupRoutes);
+    app.use("/logout", logOutRoute);
     app.use("/aftersignup", afterSignupRoutes)
     app.use("/afterlogin", afterloginRoutes)
     app.use("/login", loginRoutes)
