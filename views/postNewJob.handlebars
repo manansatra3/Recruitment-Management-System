@@ -23,14 +23,14 @@
                 <td><input class='form-control' type='text' name='jobLocation' required></td>
             </tr>
             <tr>
-                <th><label>Job Designation:</label></th>
+                {{!-- <th><label>Job Designation:</label></th>
                 <td></td>
-                <td><input type='text' name='designation' class='form-control' required></td>
+                <td><input type='text' name='designation' class='form-control' required></td> --}}
             </tr>
             <tr>
                 <th><label>Experience Level:</label></th>
                 <td></td>
-                <td><select id='experienceLevel'class="form-control" name='experienceLevel'>
+                <td><select id='experienceLevel'class="form-control" name='experienceLevel' required>
                         <option value="">-</option>
                         <option value="internship">Internship</option>
                         <option value="entryLevel">Entry Level</option>
@@ -41,9 +41,9 @@
                     </select></td>
             </tr>
             <tr>
-                <th><label>Job Description:</label></th>
+                <th><label>Job Responsibilities:</label></th>
                 <td></td>
-                <td><textarea rows="4" class="form-control" name="jobDescription"></textarea></td>
+                <td><textarea rows="4" class="form-control" name="jobDescription" required></textarea></td>
             </tr>
         </table>
         <hr>
