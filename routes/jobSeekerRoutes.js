@@ -4,6 +4,8 @@ const data = require("../data");
 const multer = require('multer');
 const path = require('path');
 const info = data.applicantData;
+const mongoCollections = require("./../data/collection");
+const jobsAndDocs = mongoCollections.jobsAndDocs;
 
 // const upload = multer()
 const upload = multer({ //multer settings
