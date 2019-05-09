@@ -10,7 +10,7 @@ module.exports ={
      * @param {*} email validated email
      * @param {*} password password they set, 
      */
-    async signup(type, username, email, password){
+    async signup(type, username, email, password, firstName, lastName, phoneNumber){
         if ((!username) || (typeof username !== "string")){
             throw `Error: ${username} is invalid`;
         }
@@ -20,13 +20,25 @@ module.exports ={
         if ((!email) || (typeof email !== "string")){
             throw `Error: ${email}is invalid`;
         }
+        if ((!firstName) || (typeof firstName !== "string")){
+            throw `Error: ${firstName} is invalid`;
+        }
+        if ((!lastName) || (typeof lastName !== "string")){
+            throw `Error: ${lastName} is invalid`;
+        }
+        if ((!phoneNumber) || (typeof phoneNumber !== "string")){
+            throw `Error: ${phoneNumber} is invalid`;
+        }
         const person = await users();
         let newPerson = {
             type,
             username,
             email,
             //this will bcrypt the password so it is harder to decrypt
-            password: bcrypt.hashSync(password,1)
+            password: bcrypt.hashSync(password,1),
+            firstName,
+            lastName,
+            phoneNumber
 
         };
         const insert = await person.insertOne(newPerson);

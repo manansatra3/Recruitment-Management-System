@@ -7,6 +7,9 @@ if (myForm) {
     const emailInput = document.getElementById("email")
     const passwordInput = document.getElementById("password");
     const confirmpasswordInput = document.getElementById("confirmpassword");
+    const firstNameInput = document.getElementById("firstName")
+    const lastNameInput = document.getElementById("lastName")
+    const phoneNumberInput = document.getElementById("phoneNumber")
     //Add an event listener for the form submit
     myForm.addEventListener("submit", event => {
         //We need to prevent the default behavior of the form submit
@@ -171,6 +174,35 @@ if (myForm) {
             $("#confirmpassworderror").html("You Need to supply a password again!");
             return false;
         }
+
+        if(firstNameInput.value)
+        {
+            $("#firstNameerror").hide();
+        }
+        else{
+            $("#firstNameerror").show();
+            $("#firstNameerror").html("You Need to supply first name!");
+            return false;
+        }
+        if(lastNameInput.value)
+        {
+            $("#lastNameerror").hide();
+        }
+        else{
+            $("#lastNameerror").show();
+            $("#lastNameerror").html("You Need to supply last name!");
+            return false;
+        }
+        if(phoneNumberInput.value)
+        {
+            $("#phoneNumbererror").hide();
+        }
+        else{
+            $("#phoneNumbererror").show();
+            $("#phoneNumbererror").html("You Need to supply phone number!");
+            return false;
+        }
+
         myForm.submit()
 
     });
