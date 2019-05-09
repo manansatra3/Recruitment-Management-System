@@ -18,6 +18,11 @@ router.get("/", async (req, res) => {
             })
             return
         }
+        if(req.session.userType == "Recruiter")
+        {
+            res.status(200).render("./recruiterPostOrViewPage");
+            return
+        }
     }
     // const usersData = req.body;
     // tryy
