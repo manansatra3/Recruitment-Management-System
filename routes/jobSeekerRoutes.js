@@ -6,6 +6,8 @@ const path = require('path');
 const info = data.applicantData;
 const mongoCollections = require("./../data/collection");
 const jobsAndDocs = mongoCollections.jobsAndDocs;
+//
+const application = require("../data/application")
 
 // const upload = multer()
 const upload = multer({ //multer settings
@@ -84,8 +86,31 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
                 };
                 await jobsAndDocsCollection.insertOne(toBeInsertedInDb);
             }
+
+
+            //
+            //console.log(newApplication.createApplication("hi"))
+            console.log("");
+            console.log("hi");
+            console.log(currentUser)
+            console.log(req.params.jobId)
+                const toBeInsertedInApplicationCollection = {
+                    userId: currentUser,
+                    jobId: req.params.jobId
+                }
+            console.log(toBeInsertedInApplicationCollection)
+            await application.createApplication(toBeInsertedInApplicationCollection.userId,toBeInsertedInApplicationCollection.jobId)
+
+
+
+
+            //
+
             console.log("Rendering afterSubmitApplication")
             res.render('afterSubmitApplication.handlebars')
+
+            
+
         } catch (e) {
             res.status(500).json({ msg: 'error', err: e })
         }

@@ -4,6 +4,7 @@ const submitApplication = require("./submitApplication");
 const getApplicantDocuments = require('./getApplicantDocuments');
 const employerData = require('./employerInformation');
 const jobDescription = require('./jobDescription');
+const application = require('./application')
 
 
 module.exports = {
@@ -12,5 +13,6 @@ module.exports = {
   employerData,
   submitApplication,
   getApplicantDocuments,
-  jobDescription
+  jobDescription,
+  application
 };
