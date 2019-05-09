@@ -10,7 +10,8 @@ router.post("/:jobId?", async (req, res) => {
     //console.log(typeof req.query.jobId)
     const result = await jobDescription.getJobById(req.query.jobId)
     res.status(200).render("applicantViewJobDescription",{
-        result : result
+        result : result,
+        logoutOption: true
     })
     //res.status(200).json({message: "hello"})
   });
