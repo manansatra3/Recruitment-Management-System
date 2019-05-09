@@ -1,6 +1,6 @@
 {{!-- extract information from this page and enter in mongodb --Chrstina Li --}}
 <div class='container'>
-    <form onsubmit='checkFormValidation(); return false;' id='applicationSubmissionForm'>
+    <form  id='applicationSubmissionForm' method ="POST" action ="/profile">
         <hr>
         <h2>Personal Information</h2>
         <hr>
@@ -32,7 +32,7 @@
                         placeholder="000-000-0000" required></td>
             </tr>
             <tr>
-                <th rowspan="6"><label>Address:</label></th>
+                <th rowspan="6" name='address'><label>Address:</label></th>
             </tr>
             <tr>
                 <td><label>Street Address:</label></td>
@@ -118,7 +118,7 @@
         <hr>
         <table class='table table-striped'>
             <tr>
-                <th rowspan='6'>Most Recent Education:</th>
+                <th rowspan='6' name='currentEducation'>Most Recent Education:</th>
             </tr>
             <tr>
                 <td><label>University Name:</label></td>
@@ -147,7 +147,7 @@
                 </td>
             </tr>
             <tr>
-                <th rowspan='6'>Previous Education:</th>
+                <th rowspan='6' name='previousEducation'>Previous Education:</th>
             </tr>
             <tr>
                 <td><label>University Name:</label></td>
@@ -177,7 +177,7 @@
         <hr>
         <table class='table table-striped'>
             <tr>
-                <th rowspan="4">Most Recent Work:</th>
+                <th rowspan="4" name='currentWork'>Most Recent Work:</th>
             </tr>
             <tr>
                 <td><label>Employer Name:</label></td>
@@ -197,7 +197,7 @@
                 </td>
             </tr>
             <tr>
-                <th rowspan="4">Previous Work:</th>
+                <th rowspan="4" name='previousWork'>Previous Work:</th>
             </tr>
             <tr>
                 <td><label>Employer Name:</label></td>
@@ -213,7 +213,8 @@
             </tr>
         </table>
         <hr>
-        <input type="submit" class="btn btn-primary btn-lg" name='submitApplicationForm'>
+        <button type = "submit">Submit</button>
+        {{!-- <input type="submit" class="btn btn-primary btn-lg" name='submitApplicationForm'> --}}
     </form>
     {{!-- </div> --}}
 </div>

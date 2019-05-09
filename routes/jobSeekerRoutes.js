@@ -3,6 +3,8 @@ const router = express.Router();
 const data = require("../data");
 const multer = require('multer');
 const path = require('path');
+const info = data.applicantData;
+
 // const upload = multer()
 const upload = multer({ //multer settings
     fileFilter: function (req, file, callback) {
@@ -75,8 +77,24 @@ res.render('submitApplication')
 //     })
 // });
 
-router.get("/profile", (req, res) => {
-    res.render('profileSubmission.handlebars');
-});
+// router.get("/profile", (req, res) => {
+//     res.render('profileSubmission.handlebars');
+// });
 
+// router.post("/", async (req, res) => {
+//     const applicantInfo = req.body;
+//     console.log(applicantInfo.name)
+//     if(!applicantInfo || !applicantInfo.name || !applicantInfo.email || !applicantInfo.phoneNumber){
+//       res.sendStatus(400);
+//       return;
+//     }
+//     try {
+//         const addInfo = await info.applicantapplicantInfo(applicantInfo.name, applicantInfo.email, applicantInfo.phoneNumber, applicantInfo.education, applicantInfo.work);
+//         res.json(addInfo);
+//         res.status(305).render("/viewJobDescription");
+//     } catch (e) {
+//       res.sendStatus(500);
+//       return;
+//     }
+// })
 module.exports = router;

@@ -1,33 +1,40 @@
-const mongoCollections = require("./collection");
-const ObjectId = require("mongodb").ObjectID;
+ const mongoCollections = require("./collection");
 const applicantInfo = mongoCollections.applicantInfo;
-const signupData = require("./users");
 
 module.exports = {
     /**
      *update the applicant applicantInfo when they sign up
      *
      */
-    async applicantapplicantInfo(id, name, email, phoneNumber, education, work){
-        const info = await aapplicantInfo();
-        //objId should be coming from the signup database where that Id is stored
-        const objId = ObjectId(id);
+    async applicantapplicantInfo(id, firstName, lastName, email, phoneNumber, address, currentEducation, previousEducation, currentWork, previousWork){
+        const info = await applicantInfo();
         let updatedInfo = {
-            id: objId,
-            name,
+            id,
+            name: {
+                firstName,
+                lastName
+            },
             email,
             phoneNumber,
-            education,
-            work,
+            address,
+            education: {
+                currentEducation,
+                previousEducation
+            },
+            work: {
+                currentWork,
+                previousWork
+            },
         }
         const insert = await info.insertOne(updatedInfo);
         
         if(insert.insertedCount === 0){
-            throw "Could not add title";
+            throw "Could not add information";
         }
-
-        return await this.get(insert.insertedId);
+        const newId = insert.insertedId;
+        return await this.get(newId);
     },
+
     async getApplicantById(id){
         if(!id){
             throw "Error: no id was provided";
@@ -39,6 +46,7 @@ module.exports = {
         }
         return applicant;
     },
+    
     async updateApplicantInfo(id, updatedInfo){
         const info = await applicantInfo();
         const updated = {};
