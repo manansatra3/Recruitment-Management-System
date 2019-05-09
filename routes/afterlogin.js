@@ -11,10 +11,12 @@ router.get("/", async (req, res) => {
         {
             const result = await jobDescription.getAllJobs();
             console.log(result)
+            console.log(req.session)
             res.status(200).render("./applicantViewJobPostings",
             {
               result : result
             })
+            return
         }
     }
     // const usersData = req.body;
@@ -41,7 +43,7 @@ router.get("/", async (req, res) => {
     // {
     // res.status(404).json({message:error})
     // }
-  
+    res.json({error: "not logged in"})
   });
   
   module.exports = router;
