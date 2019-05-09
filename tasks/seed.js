@@ -6,6 +6,7 @@ const jobDescription = data.jobDescription;
 //before executing please run the command "node tasks/seed.js once"
 async function main() {
   const db = await dbConnection();
+  
   //await db.dropDatabase();
 
   //recruiters
