@@ -10,11 +10,11 @@
                 <td></td>
                 <td><input class='form-control' type='text' name='firstName' required></td>
             </tr>
-            <tr>
+            {{!-- <tr>
                 <th><label>Middle Name:</label></th>
                 <td></td>
                 <td><input class='form-control' type='text' id='middleName' name='middleName'></td>
-            </tr>
+            </tr> --}}
             <tr>
                 <th><label>Last Name:</label></th>
                 <td></td>
@@ -31,7 +31,7 @@
                 <td><input type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name='phoneNumber' class='form-control'
                         placeholder="000-000-0000" required></td>
             </tr>
-            <tr>
+            {{!-- <tr>
                 <th rowspan="6" name='address'><label>Address:</label></th>
             </tr>
             <tr>
@@ -105,13 +105,12 @@
                         <option value="WV">West Virginia</option>
                         <option value="WY">Wyoming</option>
                     </select>
-                    {{!-- </div> --}}
                 </td>
             </tr>
             <tr>
                 <td><label>Zip Code:</label></td>
                 <td><input class='form-control' type='number' name='zipCode' required></td>
-            </tr>
+            </tr> --}}
         </table>
         <hr>
         <h2>Education</h2>
@@ -213,8 +212,7 @@
             </tr>
         </table>
         <hr>
-        <button type = "submit">Submit</button>
+        <button type = "submit" class="btn btn-primary btn-lg">Submit</button>
         {{!-- <input type="submit" class="btn btn-primary btn-lg" name='submitApplicationForm'> --}}
     </form>
-    {{!-- </div> --}}
 </div>
