@@ -67,16 +67,19 @@ module.exports ={
 
     //I have not tested this function; 
     async setApplicationStatus(applicationID, newStatus){
-        const updateResult = await newApplication.updateOne({_id: applicationID }, {$set: {applicationStatus:newStatus}});
+
+        const newApplication = await application();
+        var targetObjectID = ObjectId.createFromHexString(applicationID);
+        const updateResult = await newApplication.updateOne({_id: targetObjectID }, {$set: {applicationStatus:newStatus}});
 
         if (updateResult.modifiedCount === 0) {
-            let errorMessage = `Error: update application: (${id}) with new animalType (${newType}) fail!`;
+            let errorMessage = `Error: update application: (${targetObjectID}) with new status (${newStatus}) fail!`;
             throw errorMessage;
         }
 
-        const result = await newApplication.findOne({_id: applicationID});
+        const result = await newApplication.findOne({_id: targetObjectID});
         if (result === null) {
-            let errorMessage = `Error: there is not application with ID ${id} in the collection, when we try to find updated information!`;
+            let errorMessage = `Error: there is not application with ID ${targetObjectID} in the collection, when we try to find updated information!`;
             throw errorMessage;
         }
 
