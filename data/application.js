@@ -29,20 +29,21 @@ module.exports ={
         return await this.get(newId);
 
     },
-    async get(id){
+    async get(targetUserId){
         //given id, return the animal from the database
         //come, this is not animal. ok?
-        if(!id){
+        if(!targetUserId){
             throw "Error: no id was provided";
         }
         const newApplication = await application();
 
 
-        //From here, I will convert the incoming string ID to the object;
-        var userid = ObjectId.createFromHexString(id);
+        // //From here, I will convert the incoming string ID to the object; discard
+        // var targetUserId = ObjectId.createFromHexString(id);
 
 
-        const findApplication = await newApplication.findOne({_id: userid});
+
+        const findApplication = await newApplication.find({userId: targetUserId}).toArray();
         // if(findPerson === null){
         //     throw "No person with that id";
         // }

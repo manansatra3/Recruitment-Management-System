@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
-const jobDescription = data.jobDescription
+const jobDescription = data.jobDescription;
+const application = data.application;
 
 router.get("/", async (req, res) => {
     //res.status(200).json({message:"go home"})
@@ -12,6 +13,14 @@ router.get("/", async (req, res) => {
             const result = await jobDescription.getAllJobs();
             //console.log(result)
             //console.log(req.session)
+
+            //From here, I will get the application for the specific user; 
+            var userID = req.session.userID;
+            const applicationResult = await application.get(userID);
+            // if(applicationResult == null){
+
+            // }
+            console.log(applicationResult);
             res.status(200).render("./applicantViewJobPostings",
             {
               result : result,
