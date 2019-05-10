@@ -25,17 +25,22 @@
     <hr>
     <form method="POST">
         <input class="btn btn-primary btn-lg" type="submit" value="Download Documents">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="btn-group dropdown">
+
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Application Status
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
                 <a class="dropdown-item" href="#">Pending</a>
-                <a class="dropdown-item" href="#">Interviewing</a>
-                <a class="dropdown-item" href="#">Selected</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Interview</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Accepted</a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Rejected</a>
             </div>
-        </div>
+
+</div>
     </form>
 </div>
