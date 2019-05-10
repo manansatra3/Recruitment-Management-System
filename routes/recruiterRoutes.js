@@ -52,6 +52,7 @@ router.get("/viewApplications", async (req, res)=>{
 
 
 router.get("/viewApplications/:jobId/:userId", async (req, res)=>{
+    console.log(req.params);
     res.render('viewIndividualApplicant.handlebars')
 });
 
@@ -86,6 +87,8 @@ router.post("/viewApplications/getApplicantNames:JobId?",async (req,res) =>{
         let currentUserName = result[i].fullName;
         var currentName = {}
         currentName.name = currentUserName
+        currentName.userId = result[i].userId;
+        currentName.jobId = result[i].jobId;
         applicants.push(currentName);
     }
     res.status(200).render("applicantDetailsForRecruiter",

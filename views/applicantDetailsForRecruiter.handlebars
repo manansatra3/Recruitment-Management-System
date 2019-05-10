@@ -2,8 +2,9 @@
 <p>View all Applications</p>
 <ul class ="applications-list">
     {{#each applicantsArray}}
-    <li class = "eachJob" onclick="">
-        {{name}}
+    <li class = "eachJob" onclick="" >
+        <a href ="/employer/viewApplications/{{jobId}}/{{userId}}">{{name}}</a>
+        
     </li>
     {{/each}}
 </ul>
