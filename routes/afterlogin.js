@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
         if(req.session.userType === "Applicant")
         {
             const result = await jobDescription.getAllJobs();
-            console.log(result)
-            console.log(req.session)
+            //console.log(result)
+            //console.log(req.session)
             res.status(200).render("./applicantViewJobPostings",
             {
               result : result,
