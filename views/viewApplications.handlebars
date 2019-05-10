@@ -1,11 +1,11 @@
 <p>Welcome Recruiter</p>
 <p>View all Applications</p>
 <ul class ="applications-list">
-    {{#each archiveStream}}
+    {{#each countApplicationsArray}}
     <li class = "eachJob" onclick="">
-        <form action="/getApplicantDocuments={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
-        <label for={{_id}}"form" >{{jobTitle}}</label>  
-        <button type="submit" form={{_id}} value="Submit"> View</button>    
+        <form action="/employer/viewApplications/getApplicantNames?JobId={{JobId}}" method="POST" id={{JobId}} class={{JobId}}"form">
+        <label for={{JobId}}"form" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>  
+        <button type="submit" form={{JobId}} value="Submit"> View</button>    
          </form>
     </li>
     {{/each}}

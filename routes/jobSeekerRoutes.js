@@ -7,6 +7,7 @@ const info = data.applicantData;
 const mongoCollections = require("./../data/collection");
 const jobsAndDocs = mongoCollections.jobsAndDocs;
 const jobDescription = data.jobDescription;
+const user = data.usersData;
 //
 const application = require("../data/application")
 
@@ -100,11 +101,14 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
                     jobId: req.params.jobId
                 }
             console.log(toBeInsertedInApplicationCollection)
+            var targetUser = await user.get(currentUser);
+            var currentUserName = targetUser.firstName + " " + targetUser.lastName;
             //From here I will add some job name attribute in the application collection;
             var jobID = req.params.jobId;
             var job = await jobDescription.getJobById(jobID)
             var jobName = job.jobTitle;
-            await application.createApplication(toBeInsertedInApplicationCollection.userId,toBeInsertedInApplicationCollection.jobId,jobName);
+            var userName = currentUserName;
+            await application.createApplication(toBeInsertedInApplicationCollection.userId,toBeInsertedInApplicationCollection.jobId,jobName,userName);
 
 
 

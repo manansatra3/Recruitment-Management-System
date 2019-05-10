@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 
 module.exports ={
     
-    async createApplication(userId,jobId,jobName)
+    async createApplication(userId,jobId,jobName,fullName)
     {
         console.log("hi")
         console.log(userId)
@@ -18,6 +18,9 @@ module.exports ={
         if(!jobName){
             throw "Error: no job name was provided";
         }
+        if(!fullName){
+            throw "Error: no full name was provided"
+        }
 
         var applicationTime = new Date().toUTCString();
         var applicationStatus = "Pending"
@@ -27,7 +30,8 @@ module.exports ={
             jobId,
             applicationTime,
             jobName,
-            applicationStatus
+            applicationStatus,
+            fullName
 
         };
         const insert = await newApplication.insertOne(applicationObject);
@@ -59,7 +63,7 @@ module.exports ={
         return findApplication;
     },
 
-    async getALl(){
+    async getAll(){
         const allApplication = await newApplication.find({}).toArray();
         return allApplication;
     },
@@ -105,6 +109,58 @@ module.exports ={
         // }
         return findApplication;
 
+    },
+    async allApplications(){
+        const apply = await application();
+        return await apply.find({}).toArray();
+    },
+
+    async getApplicationByJobId(jobId)
+    {
+        if(!jobId){
+            throw "Error: no id was provided";
+        }
+        const newApplication = await application();
+        var targetJobId = jobId.toString()
+        //change the findOne function to find.toArray, because we need all the application
+        var numberOfUniqueJobs = await newApplication.find({jobId: targetJobId}).toArray();
+        //console.log(numberOfUniqueJobs)
+
+        // if(findPerson === null){
+        //     throw "No person with that id";
+        // }
+        return numberOfUniqueJobs;
+
+    },
+
+    async getFullName(jobId)
+    {
+        if(!jobId){
+            throw "Error: no id was provided";
+        }
+        const newApplication = await application();
+        var targetJobId = jobId.toString()
+        //change the findOne function to find.toArray, because we need all the application
+        var targetApplication = await newApplication.find({jobId: targetJobId}).toArray();
+
+    
+        //console.log(numberOfUniqueJobs)
+
+        // if(findPerson === null){
+        //     throw "No person with that id";
+        // }
+        return targetApplication;
+
     }
+    // async groupJobIdWithUserCount(){
+    //     console.log("inside function")
+    //     const newApplication = await application()
+    //     const result = await newApplication.aggregate([
+    //         {"$group" : {_id:"$jobName", count:{$sum:1}}}
+    //     ])
+    //     console.log("inside function 2")
+    //     console.log(result)
+    //     return result
+    // }
 
 }
