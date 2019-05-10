@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 
 module.exports ={
     
-    async createApplication(userId,jobId)
+    async createApplication(userId,jobId,jobName)
     {
         console.log("hi")
         console.log(userId)
@@ -15,13 +15,17 @@ module.exports ={
         if(!jobId){
             throw "Error: no job id was provided";
         }
+        if(!jobName){
+            throw "Error: no job name was provided";
+        }
 
         var applicationTime = new Date().toUTCString();
         const newApplication = await application();
         let applicationObject = {
             userId,
             jobId,
-            applicationTime
+            applicationTime,
+            jobName
 
         };
         const insert = await newApplication.insertOne(applicationObject);
@@ -51,6 +55,11 @@ module.exports ={
         //     throw "No person with that id";
         // }
         return findApplication;
+    },
+
+    async getALl(){
+        const allApplication = await newApplication.find({}).toArray();
+        return allApplication;
     }
 
 }

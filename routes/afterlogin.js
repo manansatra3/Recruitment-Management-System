@@ -16,11 +16,11 @@ router.get("/", async (req, res) => {
 
             //From here, I will get the application for the specific user; 
             var userID = req.session.userID;
-            const applicationResult = await application.get(userID);
-            // if(applicationResult == null){
-
-            // }
-            console.log(applicationResult);
+            var applicationResult = await application.get(userID);
+            if(applicationResult == null){
+                applicationResult = ["Does not apply any job! Right Now"]
+            }
+            //console.log(applicationResult);
             res.status(200).render("./applicantViewJobPostings",
             {
               result : result,
