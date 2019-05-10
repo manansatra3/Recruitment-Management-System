@@ -1,5 +1,6 @@
 const mongoCollections = require("./collection");
 const application= mongoCollections.application;
+const { ObjectId } = require('mongodb');
 
 module.exports ={
     
@@ -30,11 +31,18 @@ module.exports ={
     },
     async get(id){
         //given id, return the animal from the database
+        //come, this is not animal. ok?
         if(!id){
             throw "Error: no id was provided";
         }
         const newApplication = await application();
-        const findApplication = await newApplication.findOne({_id: id});
+
+
+        //From here, I will convert the incoming string ID to the object;
+        var userid = ObjectId.createFromHexString(id);
+
+
+        const findApplication = await newApplication.findOne({_id: userid});
         // if(findPerson === null){
         //     throw "No person with that id";
         // }
