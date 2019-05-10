@@ -42,7 +42,7 @@ module.exports ={
         // var targetUserId = ObjectId.createFromHexString(id);
 
 
-
+        //change the findOne function to find.toArray, because we need all the application
         const findApplication = await newApplication.find({userId: targetUserId}).toArray();
         // if(findPerson === null){
         //     throw "No person with that id";
