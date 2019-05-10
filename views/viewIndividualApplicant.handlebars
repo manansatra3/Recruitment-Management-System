@@ -1,158 +1,41 @@
 <div class='container'>
     <h1>Entire pge should extract info from MongoDB using the userId passed in query</h1>
     <table class='table table-striped'>
-            <tr>
-                <th><label>First Name:</label></th>
-                <td></td>
-                <td><label>Manan</label></td>
-            </tr>
-            <tr>
-                <th><label>Middle Name:</label></th>
-                <td></td>
-                <td>Manish</td>
-            </tr>
-            <tr>
-                <th><label>Last Name:</label></th>
-                <td></td>
-                <td><label>Satra</label></td>
-            </tr>
-            <tr>
-                <th><label>Email:</label></th>
-                <td></td>
-                <td><label>msatra@stevens.edu</label></td>
-            </tr>
-            <tr>
-                <th><label>Phone Number:</label></th>
-                <td></td>
-                <td><label>111-111-1111</label></td>
-            </tr>
-            <tr>
-                <th rowspan="6"><label>Address:</label></th>
-            </tr>
-            <tr>
-                <td><label>Street Address:</label></td>
-                <td><label>100 Street</label></td>
-            </tr>
-
-            <tr>
-                <td><label>Apartment/Floor/Suite:</label></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><label>City:</label></td>
-                <td><label>Jersey City</label></td>
-            </tr>
-            <tr>
-                <td><label>State:</label></td>
-                <td>
-                    <label>NJ</label>
-                    {{!-- </div> --}}
-                </td>
-            </tr>
-            <tr>
-                <td><label>Zip Code:</label></td>
-                <td><label>00000</label></td>
-            </tr>
-        </table>
-        <hr>
-        <h2>Education</h2>
-        <hr>
-        <table class='table table-striped'>
-            <tr>
-                <th rowspan='6'>Most Recent Education:</th>
-            </tr>
-            <tr>
-                <td><label>University Name:</label></td>
-                <td><label>Stevens</label></td>
-            </tr>
-            <tr>
-                <td><label>GPA:</label></td>
-                <td><label>4.0</label></td>
-            </tr>
-            <tr>
-                <td><label>Degree:</label></td>
-                <td><label>Masters</label></td>
-            </tr>
-            <tr>
-                <td><label>Major:</label></td>
-                <td><label>CS</label></td>
-            </tr>
-            <tr>
-                <td><label>Graduation (Expected or Actual):</label></td>
-                <td>Spring 2019</td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <hr>
-                </td>
-            </tr>
-            <tr>
-                <th rowspan='6'>Previous Education:</th>
-            </tr>
-            <tr>
-                <td><label>University Name:</label></td>
-                <td><label>Mumbai University</label></td>
-            </tr>
-            <tr>
-                <td><label>GPA:</label></td>
-                <td><label>3.8</label></td>
-            </tr>
-            <tr>
-                <td><label>Degree:</label></td>
-                <td><label>Bachelors</label></td>
-            </tr>
-            <tr>
-                <td><label>Major:</label></td>
-                <td>CE</td>
-            </tr>
-            <tr>
-                <td><label>Graduation:</label></td>
-                {{!-- validate to not have date after today --}}
-                <td><label>2017</label></td>
-            </tr>
-        </table>
-        <hr>
-        <h2>Work</h2>
-        <hr>
-        <table class='table table-striped'>
-            <tr>
-                <th rowspan="4">Most Recent Work:</th>
-            </tr>
-            <tr>
-                <td><label>Employer Name:</label></td>
-                <td><input class='form-control' type='text' name='currentEmployer'></td>
-            </tr>
-            <tr>
-                <td><label>Employer City:</label></td>
-                <td><input class='form-control' type='text' name='currentEmployerCity'></td>
-            </tr>
-            <tr>
-                <td><label>Position:</label></td>
-                <td><input class='form-control' type='text' name='currentPosition'></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <hr>
-                </td>
-            </tr>
-            <tr>
-                <th rowspan="4">Previous Work:</th>
-            </tr>
-            <tr>
-                <td><label>Employer Name:</label></td>
-                <td><input class='form-control' type='text' name='previousEmployer'></td>
-            </tr>
-            <tr>
-                <td><label>Employer City:</label></td>
-                <td><input class='form-control' type='text' name='previousEmployerCity'></td>
-            </tr>
-            <tr>
-                <td><label>Position:</label></td>
-                <td><input class='form-control' type='text' name='previousPosition'></td>
-            </tr>
-        </table>
-        <hr>
-        <form method="POST">
-            <input class="btn btn-primary btn-lg" type="submit" value="Download Documents">
-        </form>
+        <tr>
+            <th><label>First Name:</label></th>
+            <td></td>
+            <td><label>Manan</label></td>
+        </tr>
+        <tr>
+            <th><label>Last Name:</label></th>
+            <td></td>
+            <td><label>Satra</label></td>
+        </tr>
+        <tr>
+            <th><label>Email:</label></th>
+            <td></td>
+            <td><label>msatra@stevens.edu</label></td>
+        </tr>
+        <tr>
+            <th><label>Phone Number:</label></th>
+            <td></td>
+            <td><label>111-111-1111</label></td>
+        </tr>
+    </table>
+    <hr>
+    <form method="POST">
+        <input class="btn btn-primary btn-lg" type="submit" value="Download Documents">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Application Status
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Pending</a>
+                <a class="dropdown-item" href="#">Interviewing</a>
+                <a class="dropdown-item" href="#">Selected</a>
+                <a class="dropdown-item" href="#">Rejected</a>
+            </div>
+        </div>
+    </form>
 </div>
