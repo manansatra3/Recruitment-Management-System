@@ -8,8 +8,10 @@ router.get('/', async (req, res) => {
             return console.log(err);
         }
         res.render("logout");
+        return;
     });
-    res.render('logout')
+    //who did this? this is ....... I do not want to say.....
+    //res.render('logout')
 });
 
 
