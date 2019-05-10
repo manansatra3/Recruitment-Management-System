@@ -20,12 +20,14 @@ module.exports ={
         }
 
         var applicationTime = new Date().toUTCString();
+        var applicationStatus = "Pending"
         const newApplication = await application();
         let applicationObject = {
             userId,
             jobId,
             applicationTime,
-            jobName
+            jobName,
+            applicationStatus
 
         };
         const insert = await newApplication.insertOne(applicationObject);
@@ -60,6 +62,25 @@ module.exports ={
     async getALl(){
         const allApplication = await newApplication.find({}).toArray();
         return allApplication;
+    },
+
+
+    //I have not tested this function; 
+    async setApplicationStatus(applicationID, newStatus){
+        const updateResult = await newApplication.updateOne({_id: applicationID }, {$set: {applicationStatus:newStatus}});
+
+        if (updateResult.modifiedCount === 0) {
+            let errorMessage = `Error: update application: (${id}) with new animalType (${newType}) fail!`;
+            throw errorMessage;
+        }
+
+        const result = await newApplication.findOne({_id: applicationID});
+        if (result === null) {
+            let errorMessage = `Error: there is not application with ID ${id} in the collection, when we try to find updated information!`;
+            throw errorMessage;
+        }
+
+        return result;
     }
 
 }
