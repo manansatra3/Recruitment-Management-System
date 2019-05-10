@@ -2,42 +2,41 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 
-router.get('/postOrView', async (req, res)=>{
+router.get('/postOrView', async (req, res) => {
     res.render('recruiterPostOrViewPage.handlebars', {
         logoutOption: true
     });
 });
 
-router.get("/postNewJob",(req,res)=>{
+router.get("/postNewJob", (req, res) => {
     res.render('postNewJob.handlebars', {
         logoutOption: true
     });
 });
 
-router.get("/viewApplications", async (req, res)=>{
+router.get("/viewApplications", async (req, res) => {
     // try{
     // console.log("before result")
     // const result = await data.application.groupJobIdWithUserCount()
-    
+
     // //console.log(result)
     // console.log("after result")
     // }
     // catch(error){
 
     // }
-    const jobDescription= await data.jobDescription;
+    const jobDescription = await data.jobDescription;
     const jobDescriptionResult = await jobDescription.getAllJobs();
-    var countApplicationsArray =[]
-    
-    for(var i=0; i<jobDescriptionResult.length; i++)
-    {
+    var countApplicationsArray = []
+
+    for (var i = 0; i < jobDescriptionResult.length; i++) {
         const application = await data.application;
         var applicationResult = await application.getApplicationByJobId(jobDescriptionResult[i]._id);
         var applicationNumber = applicationResult.length;
         var countApplications = {}
-        countApplications["Name"]=jobDescriptionResult[i].jobTitle
-        countApplications["Count"]=applicationNumber
-        countApplications["JobId"]=jobDescriptionResult[i]._id.toString();
+        countApplications["Name"] = jobDescriptionResult[i].jobTitle
+        countApplications["Count"] = applicationNumber
+        countApplications["JobId"] = jobDescriptionResult[i]._id.toString();
         //countApplications[jobDescriptionResult[i].jobTitle] = applicationNumber
         countApplicationsArray.push(countApplications);
         //console.log(jobDescriptionResult[i].jobTitle+" : "+applicationNumber);
@@ -46,44 +45,48 @@ router.get("/viewApplications", async (req, res)=>{
     //console.log(countApplicationsArray)
     res.render('viewApplications.handlebars', {
         logoutOption: true,
-        countApplicationsArray : countApplicationsArray
+        countApplicationsArray: countApplicationsArray
     });
 });
 
 
-router.get("/viewApplications/:jobId/:userId", async (req, res)=>{
+router.get("/viewApplications/:jobId/:userId", async (req, res) => {
     console.log(req.params);
-    res.render('viewIndividualApplicant.handlebars')
+    const userId = req.params.userId;
+    const jobId = req.params.jobId;
+    const applicantInfo = await data.getApplicantDocuments.fetchApplicantInfo(userId);
+    console.log(`HIII ${applicantInfo}`)
+    res.render('viewIndividualApplicant.handlebars', {applicantInfo})
 });
 
-router.post("/viewApplications/:jobId/:userId", async(req, res)=>{
+router.post("/viewApplications/:jobId/:userId", async (req, res) => {
     try {
         console.log('gonna start download');
-        const userId= req.params.userId;
+        const userId = req.params.userId;
         const jobId = req.params.jobId;
         console.log(`User id from URL-- ${userId}`);
         console.log(`Job id from URL-- ${jobId}`);
         const archiveStream = await data.getApplicantDocuments.foo(userId, jobId)
-        res.send(200).json({msg:"done"});
+        // res.send(200).json({msg:"done"});
 
         // const downloadStream = await data.getApplicantDocuments.getDocuments('sample.txt');
-        res.setHeader('Content-Disposition', `attachment; filename="user-${req.params.userId}.zip"`)
+        res.setHeader('Content-Disposition', `attachment; filename="user-${userId}.zip"`)
         archiveStream.pipe(res)
         archiveStream.finalize()
-        res.sendStatus(200);
+        // res.sendStatus(200);
     } catch (err) {
         console.error(err);
-        res.status(500).json({message: err.toString()})
+        res.status(500).json({ message: err.toString() })
     }
 });
 
-router.post("/viewApplications/getApplicantNames:JobId?",async (req,res) =>{
+router.post("/viewApplications/getApplicantNames:JobId?", async (req, res) => {
     const application = data.application;
     var applicants = [];
     //console.log(req.query)
     //console.log(req)
     const result = await application.getFullName(req.query.JobId);
-    for(let i =0; i<result.length; i++){
+    for (let i = 0; i < result.length; i++) {
         let currentUserName = result[i].fullName;
         var currentName = {}
         currentName.name = currentUserName
@@ -92,9 +95,9 @@ router.post("/viewApplications/getApplicantNames:JobId?",async (req,res) =>{
         applicants.push(currentName);
     }
     res.status(200).render("applicantDetailsForRecruiter",
-    {
-        applicantsArray : applicants
-    })
+        {
+            applicantsArray: applicants
+        })
 
 });
 
