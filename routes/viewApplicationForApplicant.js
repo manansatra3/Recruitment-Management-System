@@ -8,9 +8,16 @@ router.post("/:applicationID?", async (req, res) => {
     //const parsedId = ObjectId.createFromHexString(req.query.jobId);
     //console.log("hi")
     //console.log(typeof req.query.jobId)
-    const result = await application.getJobById(req.query.jobId)
-    res.status(200).render("applicantViewJobDescription",{
-        result : result,
+    //console.log(req.query)
+    const result = await application.getApplicationByID(req.query.applicationID)
+    //console.log(result);
+    var jobNameNow = result.jobName;
+    var applicationStatusNow = result.applicationStatus;
+    var applicationTimeNow = result.applicationTime;
+    res.status(200).render("applicantViewApplication",{
+        jobName : jobNameNow,
+        applicationStatus:applicationStatusNow,
+        applicationTime:applicationTimeNow,
         logoutOption: true
     })
     //res.status(200).json({message: "hello"})

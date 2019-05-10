@@ -81,6 +81,27 @@ module.exports ={
         }
 
         return result;
+    },
+    
+    async getApplicationByID(applicationID){
+
+        if(!applicationID){
+            throw "Error: no id was provided";
+        }
+        const newApplication = await application();
+
+
+        // //From here, I will convert the incoming string ID to the object; discard
+        // var targetUserId = ObjectId.createFromHexString(id);
+
+        var targetObjectID = ObjectId.createFromHexString(applicationID);
+        //change the findOne function to find.toArray, because we need all the application
+        const findApplication = await newApplication.findOne({_id: targetObjectID})
+        // if(findPerson === null){
+        //     throw "No person with that id";
+        // }
+        return findApplication;
+
     }
 
 }
