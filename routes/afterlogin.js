@@ -24,7 +24,8 @@ router.get("/", async (req, res) => {
             res.status(200).render("./applicantViewJobPostings",
             {
               result : result,
-              logoutOption: true
+              logoutOption: true,
+              applicationResult : applicationResult
             })
             return
         }

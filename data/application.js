@@ -15,10 +15,13 @@ module.exports ={
         if(!jobId){
             throw "Error: no job id was provided";
         }
+
+        var applicationTime = new Date().toUTCString();
         const newApplication = await application();
         let applicationObject = {
             userId,
-            jobId
+            jobId,
+            applicationTime
 
         };
         const insert = await newApplication.insertOne(applicationObject);
