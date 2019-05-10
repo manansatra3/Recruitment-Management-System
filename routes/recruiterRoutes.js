@@ -29,10 +29,10 @@ router.post("/viewApplications/:jobId/:userId", async(req, res)=>{
         console.log('gonna start download');
         const userId= req.params.userId;
         const jobId = req.params.jobId;
-        console.log(userId);
-        console.log(jobId);
+        console.log(`User id from URL-- ${userId}`);
+        console.log(`Job id from URL-- ${jobId}`);
         const archiveStream = await data.getApplicantDocuments.foo(userId, jobId)
-        // res.send(200).json({msg:"done"});
+        res.send(200).json({msg:"done"});
 
         // const downloadStream = await data.getApplicantDocuments.getDocuments('sample.txt');
         res.setHeader('Content-Disposition', `attachment; filename="user-${req.params.userId}.zip"`)

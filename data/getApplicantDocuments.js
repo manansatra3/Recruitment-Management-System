@@ -1,6 +1,7 @@
 const mongoCollections = require("./collection");
 const applicantDocuments = mongoCollections.applicantDocuments;
 const users = mongoCollections.users;
+const jobsAndDocs = mongoCollections.jobsAndDocs;
 const connection = require('./connection');
 const ObjectID = require('mongodb').ObjectID;
 const { GridFSBucket: Grid } = require('mongodb')
@@ -13,16 +14,36 @@ const archiver = require('archiver');
 async function foo(userId, jobId) {
     console.log(`In foo the userId is ${userId}`)
     console.log(`In foo the jobId is ${jobId}`)
-    const usersCollection = await users();
-    const theUser = await usersCollection.findOne({ _id: ObjectID(userId) });
-    // console.log(theUser);
-    // console.log(theUser.jobAndDocs[jobId])
-    const howManyDocs = theUser.jobAndDocs[jobId].length;
-    console.log(howManyDocs);
-    const docArray = theUser.jobAndDocs[jobId]
-    // for (let eachDoc of docArray) {
-    //     // console.log(eachDoc)
+    // const usersCollection = await users();
+    
+    const jobsAndDocsCollection = await jobsAndDocs();
+    const jobsAndDocsObject = await jobsAndDocsCollection.findOne({userId});
+    console.log(jobsAndDocsObject[jobId]);
+    const docArray = jobsAndDocsObject[jobId];
     return getDocuments(docArray);
+    
+    // const db = await connection();
+    // const grid = new Grid(db, { bucketName: 'applicantDocuments' });
+      
+    //   grid.openDownloadStreamByName('GENERAL MananSatra_Resume.docx').
+    //     pipe(fs.createWriteStream('./output.docx')).
+    //     on('error', function(error) {
+    //       assert.ifError(error);
+    //     }).
+    //     on('finish', function() {
+    //       console.log('done!');
+    //       process.exit(0);
+    //     });
+    
+    // const theUser = await usersCollection.findOne({ _id: ObjectID(userId) });
+    // // console.log(theUser);
+    // // console.log(theUser.jobAndDocs[jobId])
+    // const howManyDocs = theUser.jobAndDocs[jobId].length;
+    // console.log(howManyDocs);
+    // const docArray = theUser.jobAndDocs[jobId]
+    // // for (let eachDoc of docArray) {
+    // //     // console.log(eachDoc)
+    // return getDocuments(docArray);
 }
 
 

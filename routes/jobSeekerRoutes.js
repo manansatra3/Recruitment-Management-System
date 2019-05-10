@@ -9,22 +9,22 @@ const jobsAndDocs = mongoCollections.jobsAndDocs;
 //
 const application = require("../data/application")
 
-// const upload = multer()
-const upload = multer({ //multer settings
-    fileFilter: function (req, file, callback) {
-        var ext = path.extname(file.originalname);
-        if (ext !== '.doc' && ext !== '.docx' && ext !== '.pdf') {
-            return callback(new Error('Only doc, docx and pdf are allowed'))
-            // router.get('/error', (req, res)=>{
-            // res.render('errorPage.handlebars',{e:{statusCode:"badinput",error:"only doc docx pdf allowed"}});
-            // });
-            // callback(err)
-        }
-        else {
-            callback(null, true)
-        }
-    }
-})
+const upload = multer()
+// const upload = multer({ //multer settings
+//     fileFilter: function (req, file, callback) {
+//         var ext = path.extname(file.originalname);
+//         if (ext !== '.doc' && ext !== '.docx' && ext !== '.pdf') {
+//             return callback(new Error('Only doc, docx and pdf are allowed'))
+//             // router.get('/error', (req, res)=>{
+//             // res.render('errorPage.handlebars',{e:{statusCode:"badinput",error:"only doc docx pdf allowed"}});
+//             // });
+//             // callback(err)
+//         }
+//         else {
+//             callback(null, true)
+//         }
+//     }
+// })
 
 
 // ---------single file--------------
