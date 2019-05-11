@@ -3,41 +3,33 @@
         <tr>
             <th><label>First Name:</label></th>
             <td></td>
-            <td><label>{{applicantInfo.firstName}}</label></td>
+            <td><label>{{e.applicantInfo.firstName}}</label></td>
         </tr>
         <tr>
             <th><label>Last Name:</label></th>
             <td></td>
-            <td><label>{{applicantInfo.lastName}}</label></td>
+            <td><label>{{e.applicantInfo.lastName}}</label></td>
         </tr>
         <tr>
             <th><label>Email:</label></th>
             <td></td>
-            <td><label>{{applicantInfo.email}}</label></td>
+            <td><label>{{e.applicantInfo.email}}</label></td>
         </tr>
         <tr>
             <th><label>Phone Number:</label></th>
             <td></td>
-            <td><label>{{applicantInfo.phoneNumber}}</label></td>
+            <td><label>{{e.applicantInfo.phoneNumber}}</label></td>
         </tr>
         <tr>
             <th><label>Application Stauts:</label></th>
             <td></td>
-            <td><label>{{applicantInfo.applicationStatus}}</label></td>
+            <td><label>{{e.applicantInfo.applicationStatus}}</label></td>
         </tr>
     </table>
     <hr>
     <form method="POST">
         <input class="btn btn-primary btn-lg" type="submit" value="Download Documents">
-        <div class="btn-group dropdown" id="statusButton">
-            <select name='peer-id' style='position: relative' onchange="change()">
-                <option>--- Application Status ---</option>
-                <option value="1">Pending</option>
-                <option value="2">Interview</option>
-                <option value="3">Accepted</option>
-                <option value="4">Rejected</option>
-            </select>
-
-        </div>
     </form>
+    <br>
+    <a href ="/employer/applicationStatus/{{e.jobId}}/{{e.userId}}">Change Status</a>    
 </div>

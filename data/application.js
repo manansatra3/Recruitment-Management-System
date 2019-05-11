@@ -151,7 +151,7 @@ module.exports ={
         // }
         return targetApplication;
 
-    }
+    },
     // async groupJobIdWithUserCount(){
     //     console.log("inside function")
     //     const newApplication = await application()
@@ -162,5 +162,15 @@ module.exports ={
     //     console.log(result)
     //     return result
     // }
+
+    async changeStatus(status, userId){
+        const newApplication = await application();
+        const updated = await newApplication.updateOne({
+            userId     
+        }, {$set: {
+            applicationStatus: status
+        }});
+        return updated;
+    }
 
 }

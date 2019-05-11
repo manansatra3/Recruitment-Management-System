@@ -56,7 +56,7 @@ router.get("/viewApplications/:jobId/:userId", async (req, res) => {
     const jobId = req.params.jobId;
     const applicantInfo = await data.getApplicantDocuments.fetchApplicantInfo(userId);
     console.log(`HIII ${applicantInfo}`)
-    res.render('viewIndividualApplicant.handlebars', {applicantInfo})
+    res.render('viewIndividualApplicant.handlebars',{e: {applicantInfo, jobId, userId}})
 });
 
 router.post("/viewApplications/:jobId/:userId", async (req, res) => {
@@ -100,5 +100,16 @@ router.post("/viewApplications/getApplicantNames:JobId?", async (req, res) => {
         })
 
 });
+
+router.get("/applicationStatus/:jobId/:userId", async(req, res) => {
+    const userId = req.params.userId;
+    const jobId = req.params.jobId;
+    res.render("changeStatus", {userId, jobId});
+})
+router.post("/applicationStatus/:jobId/:userId", async (req, res) => {
+    const application = data.application;
+    let status = await application.changeStatus(req.body.radioButton, req.params.userId);
+    res.redirect(`/employer/viewApplications/${req.params.jobId}/${req.params.userId}`)
+})
 
 module.exports = router;
