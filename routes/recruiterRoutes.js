@@ -2,6 +2,21 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 
+isAuthRec = (req, res, next) => {
+    // console.log(req.session.authority)
+    if (req.session.authority == undefined || req.session.authority == false) {
+        res.render('errorPage', { e: { statusCode: "401", error: "You are not logged in, please login", redirect: "/" } })
+    }
+    else if (req.session.userType === 'Applicant') {
+        res.render('errorPage', { e: { statusCode: "403", error: "Forbidden", redirect: "/" } })
+    }
+    else {
+        next();
+    }
+};
+
+router.use(isAuthRec)
+
 router.get('/postOrView', async (req, res) => {
     res.render('recruiterPostOrViewPage.handlebars', {
         logoutOption: true

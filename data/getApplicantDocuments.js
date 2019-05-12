@@ -13,13 +13,13 @@ const archiver = require('archiver');
 const application = mongoCollections.application;
 
 async function foo(userId, jobId) {
-    console.log(`In foo the userId is ${userId}`)
-    console.log(`In foo the jobId is ${jobId}`)
+    // console.log(`In foo the userId is ${userId}`)
+    // console.log(`In foo the jobId is ${jobId}`)
     // const usersCollection = await users();
     
     const jobsAndDocsCollection = await jobsAndDocs();
     const jobsAndDocsObject = await jobsAndDocsCollection.findOne({userId});
-    console.log(jobsAndDocsObject[jobId]);
+    // console.log(jobsAndDocsObject[jobId]);
     const docArray = jobsAndDocsObject[jobId];
     return getDocuments(docArray);
     
@@ -51,7 +51,7 @@ async function foo(userId, jobId) {
 function getDocuments(docArray) {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log('Inside getDocuments')
+            // console.log('Inside getDocuments')
             const db = await connection();
             const grid = new Grid(db, { bucketName: 'applicantDocuments' });
             const archive = archiver('zip', {
@@ -85,12 +85,12 @@ function getDocuments(docArray) {
 }
 
 async function fetchApplicantInfo (userId) {
-    console.log(userId)
+    // console.log(userId)
     const usersCollection = await users();
     const userObject = await usersCollection.findOne({_id: ObjectID(userId)});
     const applicationCollection = await application();
     const applicationObject = await applicationCollection.findOne({userId: userId});
-    console.log(applicationObject);
+    // console.log(applicationObject);
     const returnObject = {
         firstName: userObject.firstName,
         lastName: userObject.lastName,

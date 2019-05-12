@@ -3,6 +3,24 @@ const router = express.Router();
 const data = require("../data");
 const application = data.application;
 
+isAuthJobSeeker = (req, res, next) => {
+    // console.log(req.session.authority)
+    if (req.session.authority == undefined || req.session.authority == false) {
+        res.render('errorPage', { e: { statusCode: "401", error: "You are not logged in, please login", redirect: "/" } })
+    }
+    else if (req.session.userType === 'Recruiter') {
+        res.render('errorPage', { e: { statusCode: "403", error: "Forbidden", redirect: "/" } })
+    }
+    else {
+        next();
+    }
+};
+
+router.use(isAuthJobSeeker)
+
+
+
+
 router.post("/:applicationID?", async (req, res) => {
     //console.log(req.query.jobId);
     //const parsedId = ObjectId.createFromHexString(req.query.jobId);

@@ -13,6 +13,22 @@ const application = require("../data/application")
 
 const upload = multer()
 
+isAuthJobSeeker = (req, res, next) => {
+    // console.log(req.session.authority)
+    if (req.session.authority == undefined || req.session.authority == false) {
+        res.render('errorPage', { e: { statusCode: "401", error: "You are not logged in, please login", redirect: "/" } })
+    }
+    else if (req.session.userType === 'Recruiter') {
+        res.render('errorPage', { e: { statusCode: "403", error: "Forbidden", redirect: "/" } })
+    }
+    else {
+        next();
+    }
+};
+
+router.use(isAuthJobSeeker)
+
+
 // const upload = multer({ //multer settings
 //     fileFilter: function (req, file, callback) {
 //         var ext = path.extname(file.originalname);
