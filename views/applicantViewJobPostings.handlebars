@@ -8,8 +8,8 @@
                 {{#each result}}
                 <li class = "eachJob" onclick="">
                     <form action="/viewJobDescription?jobId={{_id}}" method="POST" id={{_id}} class={{_id}}>
-                    <label for={{_id}} >{{jobTitle}}</label>  
-                    <button type="submit" form={{_id}} value="Submit"> View</button>    
+                    <label for="{{_id}}btn" >{{jobTitle}}</label>  
+                    <button type="submit" form={{_id}} value="Submit" id="{{_id}}btn"> View</button>    
                     </form>
                 </li>
                 {{/each}}
@@ -22,8 +22,8 @@
                 {{#each applicationResult}}
                 <li class = "each-application-list" onclick="">
                     <form action="/viewApplicationForApplicant?applicationID={{_id}}" method="POST" id={{_id}} class={{_id}}>
-                    <label for={{_id}} >{{jobName}}</label>  
-                    <button type="submit" form={{_id}} value="Submit"> View</button>    
+                    <label for="{{_id}}btn" >{{jobName}}</label>  
+                    <button type="submit" form={{_id}} value="Submit" id="{{_id}}btn"> View</button>    
                     </form>
                 </li>
                 {{/each}}

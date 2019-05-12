@@ -1,12 +1,11 @@
 <div class=viewApplicationsBox>
-    <h1>Welcome Recruiter</h1>
-    <p>View all Applications</p>
+    <h1>View all Applications</h1>
     <ul class ="applications-list">
         {{#each countApplicationsArray}}
         <li class = "eachJob" onclick="">
-            <form action="/employer/viewApplications/getApplicantNames?JobId={{JobId}}" method="POST" id={{JobId}} class={{JobId}}"form">
-            <label for={{JobId}}"form" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>
-            <button type="submit" form={{JobId}} value="Submit"> View</button>    
+            <form action="/employer/viewApplications/getApplicantNames?JobId={{JobId}}" method="POST" id={{JobId}} class="{{JobId}}form">
+            <label for="{{JobId}}btn" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>
+            <button type="submit" form={{JobId}} value="Submit" id="{{JobId}}btn"> View</button>    
             </form>
         </li>
         {{/each}}
