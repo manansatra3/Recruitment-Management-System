@@ -399,3 +399,44 @@ body{
 .applicantDetailsForRecruiterBox h2{
     color: #7471A8;
 }
+
+/*viewindividualApplicant            viewindividualApplicant            viewindividualApplicant             viewindividualApplicant       viewindividualApplicant*/
+.viewindividualApplicantBox{
+    background: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.viewindividualApplicantBox h2{
+    color: #7471A8;
+}
+
+
+/*changeStatus           changeStatus          changeStatus            changeStatus          changeStatus         changeStatus*/
+.changeStatusBox{
+    background: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.changeStatusBox h2{
+    color: #7471A8;
+}
+
+.changeStatusBox button{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    /* margin-top: 20px; */
+    width: 100px;
+    height: 40px; 
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer
+}
