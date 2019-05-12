@@ -1,10 +1,12 @@
-
-<p>Job Description</p>
-<p>Job Title: {{result.jobTitle}}</p>
-<p>Job Type: {{result.jobType}}</p>
-<p>Job Location: {{result.jobLocation}}</p>
-<p>Experience level: {{result.experienceLevel}}</p>  
-<p>Job Responsibilities: {{result.jobResponsibilities}}</p>
-<form action="/applicant/submitApplication/{{result._id}}" method="GET" id={{result._id}} class={{result._id}}"form"> 
+<div class = applicantViewJDbox>
+        <h3>Job Description</h3>
+        <p>Job Title: {{result.jobTitle}}</p>
+        <p>Job Type: {{result.jobType}}</p>
+        <p>Job Location: {{result.jobLocation}}</p>
+        <p>Experience level: {{result.experienceLevel}}</p>  
+        <p>Job Responsibilities: {{result.jobResponsibilities}}</p>
+        <form action="/applicant/submitApplication/{{result._id}}" method="GET" id={{result._id}} class={{result._id}}"form"> 
         <button type="submit" form={{result._id}} value="Submit"> Apply</button>    
-</form>
+        </form>
+</div>
+

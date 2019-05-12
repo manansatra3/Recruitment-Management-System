@@ -137,7 +137,7 @@ body{
 
 
 
-/* applicantViewJobPostings */
+/* applicantViewJobPostings   applicantViewJobPostings   applicantViewJobPostings   applicantViewJobPostings   applicantViewJobPostings*/
 
 .job-list-box{
     float: left;
@@ -224,3 +224,29 @@ body{
 }
 
 
+/*applicantViewJobPosting   applicantViewJobPosting    applicantViewJobPosting    applicantViewJobPosting    applicantViewJobPosting */
+
+.applicantViewJDbox{
+    background: #fff;
+    text-align: center;
+    margin: 100px auto 0; 
+    overflow:hidden;
+    padding: 20px 10px 20px 10px;
+}
+
+.applicantViewJDbox h3{
+    color: #7471A8;
+}
+
+.applicantViewJDbox button{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    /* margin-top: 20px; */
+    width: 300px;
+    height: 50px; 
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer
+    
+}
