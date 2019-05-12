@@ -72,7 +72,7 @@ const isAuth = (req, res, next) => {
     next();
   }
 }
-app.use(isAuth);
+//app.use(isAuth);
 configRoutes(app);
 
 app.listen(3000, () => {
