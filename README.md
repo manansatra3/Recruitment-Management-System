@@ -1,5 +1,6 @@
 # Recruitment-Management-System
-Project for CS 546 Web Programming at Stevens Institute of Technology.
+Project for CS 546 Web Programming at Stevens Institute of Technology. 
+We did a lot of pair-programming to finish this project.
 
 Step 1: `npm install` to install the neccessary modules 
 
