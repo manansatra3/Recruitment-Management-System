@@ -7,7 +7,7 @@ const jobDescription = data.jobDescription;
 async function main() {
   const db = await dbConnection();
   
-  //await db.dropDatabase();
+  // await db.dropDatabase();
 
   //recruiters
   const recruiter1 = await users.signup("Recruiter", "christina123","christina@gmail.com", "Ball1714!", "Christina", "Lee", "012-345-6789");
