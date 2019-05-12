@@ -31,9 +31,13 @@ router.get("/", async (req, res) => {
         }
         if(req.session.userType === "Recruiter")
         {
+            // console.log(req.session.userID)
+            const userObject = await data.usersData.get(req.session.userID);
+            // console.log(userObject.firstName)
             res.status(200).render("./recruiterPostOrViewPage",
             {
-                logoutOption: true
+                logoutOption: true,
+                recruiterName : userObject.firstName
             });
             return
         }

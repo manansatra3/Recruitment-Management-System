@@ -60,14 +60,14 @@ if (myForm) {
         {
             //console.log(typeof(emailInput.value));
             $("#emailerror").hide();
-            var regexp2 = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9\_]+){0,15}@[a-zA-Z0-9\_\-]+(\.[a-zA-Z0-9\_\-]+){0,4}$/;
-            if(emailInput.value.search(regexp2) == -1)
-            {   
-                console.log("hello");
-                $("#emailerror").show();
-                $("#emailerror").html("Invalid Email ID!");
-                return false;
-            }
+            // var regexp2 = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9\_]+){0,15}@[a-zA-Z0-9\_\-]+(\.[a-zA-Z0-9\_\-]+){0,4}$/;
+            // if(emailInput.value.search(regexp2) == -1)
+            // {   
+            //     // console.log("hello");
+            //     $("#emailerror").show();
+            //     $("#emailerror").html("Invalid Email ID!");
+            //     return false;
+            // }
         
 
             //We then reset the form

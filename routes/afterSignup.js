@@ -8,7 +8,7 @@ const  usersDataHandler = data.usersData;
 router.post("/", async (req, res) => {
 
   const usersData = req.body;
-  console.log(usersData)
+  // console.log(usersData)
   try{
     if(req.body === undefined){
       res.status(400).json({message : "There isn't body in the request"})
