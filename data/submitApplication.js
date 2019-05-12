@@ -42,8 +42,8 @@ async function insertDocumentsToDatabaseWithGridFS(file, metadata) {
             });
             uploadStream.on('error', () => reject("Unable to add file to GridFS"))
             uploadStream.on('finish', async (data) =>{
-                console.log(data._id);
-                console.log("uploaded")
+                // console.log(data._id);
+                // console.log("uploaded")
                 // const applicantDocumentsCollection = await applicantDocuments();
                 // var newDocId = await applicantDocumentsCollection.findOne();
                 // await db.collection('applicantDocuments.files', async function(err, collection) {

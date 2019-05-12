@@ -51,21 +51,21 @@ router.get("/viewApplications", async (req, res) => {
 
 
 router.get("/viewApplications/:jobId/:userId", async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const userId = req.params.userId;
     const jobId = req.params.jobId;
     const applicantInfo = await data.getApplicantDocuments.fetchApplicantInfo(userId);
-    console.log(`HIII ${applicantInfo}`)
+    // console.log(`HIII ${applicantInfo}`)
     res.render('viewIndividualApplicant.handlebars',{e: {applicantInfo, jobId, userId}})
 });
 
 router.post("/viewApplications/:jobId/:userId", async (req, res) => {
     try {
-        console.log('gonna start download');
+        // console.log('gonna start download');
         const userId = req.params.userId;
         const jobId = req.params.jobId;
-        console.log(`User id from URL-- ${userId}`);
-        console.log(`Job id from URL-- ${jobId}`);
+        // console.log(`User id from URL-- ${userId}`);
+        // console.log(`Job id from URL-- ${jobId}`);
         const archiveStream = await data.getApplicantDocuments.foo(userId, jobId)
         // res.send(200).json({msg:"done"});
 

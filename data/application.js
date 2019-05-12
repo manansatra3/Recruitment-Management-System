@@ -6,8 +6,8 @@ module.exports ={
     
     async createApplication(userId,jobId,jobName,fullName)
     {
-        console.log("hi")
-        console.log(userId)
+        // console.log("hi")
+        // console.log(userId)
         //console.log(jobId)
         if(!userId){
             throw "Error: no user id was provided";
