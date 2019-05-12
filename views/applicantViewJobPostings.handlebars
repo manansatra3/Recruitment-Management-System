@@ -7,8 +7,8 @@
             <ul class ="job-list">
                 {{#each result}}
                 <li class = "eachJob" onclick="">
-                    <form action="/viewJobDescription?jobId={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
-                    <label for={{_id}}"form" >{{jobTitle}}</label>  
+                    <form action="/viewJobDescription?jobId={{_id}}" method="POST" id={{_id}} class={{_id}}>
+                    <label for={{_id}} >{{jobTitle}}</label>  
                     <button type="submit" form={{_id}} value="Submit"> View</button>    
                     </form>
                 </li>
@@ -21,8 +21,8 @@
             <ul class ="application-list">
                 {{#each applicationResult}}
                 <li class = "each-application-list" onclick="">
-                    <form action="/viewApplicationForApplicant?applicationID={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
-                    <label for={{_id}}"form" >{{jobName}}</label>  
+                    <form action="/viewApplicationForApplicant?applicationID={{_id}}" method="POST" id={{_id}} class={{_id}}>
+                    <label for={{_id}} >{{jobName}}</label>  
                     <button type="submit" form={{_id}} value="Submit"> View</button>    
                     </form>
                 </li>
