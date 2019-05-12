@@ -7,7 +7,9 @@ body{
     background-image: url(/public/background/WechatIMG34.jpeg); 
 }
 
-
+.submitApplicationContainer{
+    background-image: url(/public/background/WechatIMG34.jpeg); 
+}
 
 
 .loginbox{
@@ -250,3 +252,28 @@ body{
     cursor: pointer
     
 }
+
+/* submitApplication   submitApplication   submitApplication   submitApplication   submitApplication*/ 
+.submitApplicationContainer{
+    background: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+}
+.submitApplicationContainer h2{
+    color: #7471A8;
+}
+
+/*afterSubmitApplication     afterSubmitApplication     afterSubmitApplication   afterSubmitApplication*/
+/* .afterSubmitApplicationBox{
+    background: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.afterSubmitApplicationBox h2{
+    color: #7471A8;
+} */

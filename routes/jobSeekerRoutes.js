@@ -12,6 +12,7 @@ const user = data.usersData;
 const application = require("../data/application")
 
 const upload = multer()
+
 // const upload = multer({ //multer settings
 //     fileFilter: function (req, file, callback) {
 //         var ext = path.extname(file.originalname);
@@ -44,7 +45,7 @@ router.get('/submitApplication/:jobId',async (req,res) => {
     // console.log(req.session);
     // console.log(req.session.userId);
     // console.log(req.params.jobId);
-res.render('submitApplication', {jobId:req.params.jobId })
+    res.render('submitApplication.handlebars', {jobId:req.params.jobId })
 });
 
 // ---------multiple file--------------

@@ -45,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(rewriteUnsupportedBrowserMethods);
 app.engine("handlebars", handlebarsInstance.engine);
 app.set("view engine", "handlebars");
+
 app.set("views", viewPath);
 
 
