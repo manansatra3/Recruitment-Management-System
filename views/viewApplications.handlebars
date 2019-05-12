@@ -5,7 +5,7 @@
         {{#each countApplicationsArray}}
         <li class = "eachJob" onclick="">
             <form action="/employer/viewApplications/getApplicantNames?JobId={{JobId}}" method="POST" id={{JobId}} class={{JobId}}"form">
-            <label for={{JobId}}"form" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>  
+            <label for={{JobId}}"form" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>
             <button type="submit" form={{JobId}} value="Submit"> View</button>    
             </form>
         </li>
