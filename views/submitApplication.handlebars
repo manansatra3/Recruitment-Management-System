@@ -1,28 +1,28 @@
 <div class='submitApplicationContainer'>
     <form method="POST" id="applicationSubmissionForm" enctype="multipart/form-data" action="/applicant/submitApplication/{{jobId}}">
         <hr>
-        <h2>Document Uploads</h2>
+        <h1>Document Uploads</h1>
         <hr>
         <table class='table table-striped'>
             <tr>
-                <th><label>Resume:</label></th>
-                <td><input accept=".doc, .docx, .pdf" class='form-control' type='file' name='docs' id='resume'></td>
+                <th><label for='resume'>Resume:</label></th>
+                <td><input accept=".doc, .docx, .pdf" class='form-control' type='file' name='docs' id='resume' required></td>
             </tr>
             <tr>
-                <th><label>Cover Letter:</label></th>
+                <th><label for='coverLetter'>Cover Letter:</label></th>
                 <td><input accept=".doc, .docx, .pdf" class='form-control' type='file' name='docs' id='coverLetter'></td>
             </tr>
             <tr>
-                <th><label>Transcripts:</label></th>
+                <th><label for='transcripts'>Transcripts:</label></th>
                 <td><input accept=".doc, .docx, .pdf" class='form-control' type='file' name='docs' id='transcripts'></td>
             </tr>
             <tr>
-                <th><label>Other Documents:</label></th>
+                <th><label for='otherDocuments'>Other Documents:</label></th>
                 <td><input accept=".doc, .docx, .pdf" class='form-control' type='file' name='docs' id='otherDocuments'></td>
             </tr>
         </table>
         <hr>
-        <h2>Extra Comments</h2>
+        <h2><label for='extraComments'>Extra Comments</label></h2>
         <hr>
         <table class='table table-striped'>
             <tr>
