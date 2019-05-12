@@ -1,12 +1,14 @@
-<p>Welcome Recruiter</p>
-<p>View all Applications</p>
-<ul class ="applications-list">
-    {{#each countApplicationsArray}}
-    <li class = "eachJob" onclick="">
-        <form action="/employer/viewApplications/getApplicantNames?JobId={{JobId}}" method="POST" id={{JobId}} class={{JobId}}"form">
-        <label for={{JobId}}"form" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>  
-        <button type="submit" form={{JobId}} value="Submit"> View</button>    
-         </form>
-    </li>
-    {{/each}}
-</ul>
+<div class=viewApplicationsBox>
+    <h2>Welcome Recruiter</h2>
+    <p>View all Applications</p>
+    <ul class ="applications-list">
+        {{#each countApplicationsArray}}
+        <li class = "eachJob" onclick="">
+            <form action="/employer/viewApplications/getApplicantNames?JobId={{JobId}}" method="POST" id={{JobId}} class={{JobId}}"form">
+            <label for={{JobId}}"form" >Job Name:{{Name}}-------------Number of applications:{{Count}}</label>  
+            <button type="submit" form={{JobId}} value="Submit"> View</button>    
+            </form>
+        </li>
+        {{/each}}
+    </ul>
+</div>

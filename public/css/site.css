@@ -159,7 +159,7 @@ body{
 .job-list-box{
     float: left;
     width: 50%;
-    /* border: 1px solid #7471A8; */
+    border-right: 1px solid #7471A8; 
 
 }
 
@@ -344,5 +344,58 @@ body{
 }
 
 .postNewJobBox h2{
+    color: #7471A8;
+}
+
+
+/*viewApplications        viewApplications        viewApplications        viewApplications     viewApplications*/
+.viewApplicationsBox{
+    background: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.viewApplicationsBox h2{
+    color: #7471A8;
+}
+
+.viewApplicationsBox button{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    /* margin-top: 20px; */
+    width: 47px;
+    height: 20px; 
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer
+}
+.viewApplicationsBox p{
+    font-size: 15px;
+
+}
+.viewApplicationsBox label{
+    color: #7471A8;
+
+}
+
+.applications-list{
+    border-top: 1px solid #7471A8; 
+}
+
+/*applicantDetailsForRecruiter         applicantDetailsForRecruiter       applicantDetailsForRecruiter           applicantDetailsForRecruiter*/
+.applicantDetailsForRecruiterBox{
+    background: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.applicantDetailsForRecruiterBox h2{
     color: #7471A8;
 }

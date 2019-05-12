@@ -1,10 +1,12 @@
-<h2>Applicants</h2>
-<p>View all Applications</p>
-<ul class ="applications-list">
-    {{#each applicantsArray}}
-    <li class = "eachJob" onclick="" >
-        <a href ="/employer/viewApplications/{{jobId}}/{{userId}}">{{name}}</a>
-        
-    </li>
-    {{/each}}
-</ul>
+<div class= applicantDetailsForRecruiterBox>
+    <h2>Applicants</h2>
+    <p>View all Applications</p>
+    <ul class ="applications-list">
+        {{#each applicantsArray}}
+        <li class = "eachJob" onclick="" >
+            <a href ="/employer/viewApplications/{{jobId}}/{{userId}}">{{name}}</a>
+            
+        </li>
+        {{/each}}
+    </ul>
+</div>
