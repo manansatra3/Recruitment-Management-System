@@ -19,7 +19,7 @@ const getCollectionFn = collection => {
 module.exports = {
   //signup: getCollectionFn("signup"),
   application: getCollectionFn("application"),
-  employerInfo: getCollectionFn("employerInfo"),
+  //employerInfo: getCollectionFn("employerInfo"),
   applicantDocuments: getCollectionFn("applicantDocuments.files"),
   users: getCollectionFn("users"),
   jobDescrption: getCollectionFn("jobDescription"),
