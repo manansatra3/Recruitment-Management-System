@@ -1,31 +1,37 @@
-<div class="row">
-  <div class="col-sm-12">
+<div class="loginbox">
+  <h3>Recruitment Management System</h3>
+  <div class="loginform">
     <form id="static-form1" method="post" action="/login">
       <div class="form-userName">
         <label for="username">Enter username:</label>
-        <input type="text" class="form-control" id="username" name="userName" placeholder="Enter Text" value="{{username}}">
+        <input type="text" class="text" id="username" name="userName" placeholder="Enter Text" value="{{username}}">
       </div>
       <div class="usererror" id="usererror" hidden></div>
       <div class="form-password">
         <label for="password">Enter password:</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Text" value="{{password}}" required>
+        <input type="password" class="text" id="password" name="password" placeholder="Enter Text" value="{{password}}" required>
       </div>
       {{#if hasError}}
         <p class = "logineError">{{error}}</p>
       {{/if}}
 
       <div>
-        <input type="radio" id="applicant" name="radioButton" value="Applicant" checked>
-        <label for="applicant">Applicant</label>
+        <label for="applicant">
+          <input type="radio" id="applicant" name="radioButton" value="Applicant" checked>
+          Applicant
+        </label>
       </div>
 
       <div>
-        <input type="radio" id="recruiter" name="radioButton" value="Recruiter">
-        <label for="recruiter">Recruiter</label>
+        
+        <label for="recruiter">
+          <input type="radio" id="recruiter" name="radioButton" value="Recruiter">
+          Recruiter
+        </label>
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-default">Login</button>
+        <button type="submit" class="btn-login">Login</button>
       </div>
 
 
@@ -44,7 +50,7 @@
     <p>OR</p>
     <form id="static-form2" method="get" action="/signup">
       <div class="form-group">
-        <button type="submit" class="btn btn-default">New Applicant Signup</button>
+        <button type="submit" class="btn-register">New Applicant Signup</button>
       </div>
     </form>
   </div>

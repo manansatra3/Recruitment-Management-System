@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(/public/background/WechatIMG34.jpeg); 
+}
+
+
+.loginbox{
+    width: 480px;
+    background: #fff;
+    margin: 100px auto 0; 
+    border-radius: 4px;
+    padding: 0 70px;
+    border: 1px solid #eee;
+    font-size: 12px;
+    color: #7471A8;
+    /* background-image: url(/public/background/WechatIMG34.jpeg);  */
+}
+
+
+
+.signupbox{
+    width: 480px;
+    background: #fff;
+    margin: 100px auto 0; 
+    border-radius: 4px;
+    padding: 0 70px;
+    border: 1px solid #eee;
+    font-size: 12px;
+    color: #7471A8;
+    /* background-image: url(/public/background/WechatIMG34.jpeg);  */
+}
+
+.loginbox h3{
+    font-size: 18px;
+    text-align: center;
+    margin: 36px auto;
+}
+
+.signupbox h3{
+    font-size: 18px;
+    text-align: center;
+    margin: 36px auto;
+}
+.signupform label{
+    margin-bottom: 8px;
+    width: 50%;
+    float: left;
+}
+
+.signupform .text{
+    width: 338px;
+    height: 34px; 
+    padding: 0 12px;
+    border: 1px solid #F1F1F1;
+    margin-bottom: 20px;
+}
+
+
+.loginform label{
+    margin-bottom: 8px;
+    width: 50%;
+    float: left;
+}
+.loginform .text{
+    width: 338px;
+    height: 34px; 
+    padding: 0 12px;
+    border: 1px solid #F1F1F1;
+    margin-bottom: 20px;
+}
+
+/* .btn-register{
+    width: 338px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+.btn-login{
+    width: 338px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+} */
+
+.btn-login{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    margin-top: 20px;
+    width: 338px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-register{
+    background: #fff;
+    color:  #7471A8;
+    border: 1px solid #CECDD2;
+    width: 338px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-submit{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    margin-top: 20px;
+    width: 338px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.job-list-box{
+    float: left;
+    width: 50%;
+
+}
+
+.application-list-box{
+    float: right;
+    width: 50%;
+
+}
+
+.two-list-box h2{
+    color: #7471A8;
+}
+
+

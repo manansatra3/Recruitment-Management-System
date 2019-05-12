@@ -1,23 +1,32 @@
-<p>Welcome Applicant</p>
-<p> Open job listings</p>
-<ul class ="job-list">
-    {{#each result}}
-    <li class = "eachJob" onclick="">
-        <form action="/viewJobDescription?jobId={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
-        <label for={{_id}}"form" >{{jobTitle}}</label>  
-        <button type="submit" form={{_id}} value="Submit"> View</button>    
-         </form>
-    </li>
-    {{/each}}
-<p>------------------------------------------------</p>
-<p>The Job you have applied</p>
-<ul class ="application-list">
-    {{#each applicationResult}}
-    <li class = "each-application-list" onclick="">
-        <form action="/viewApplicationForApplicant?applicationID={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
-        <label for={{_id}}"form" >{{jobName}}</label>  
-        <button type="submit" form={{_id}} value="Submit"> View</button>    
-         </form>
-    </li>
-    {{/each}}
-</ul>
+<div class = "two-list-box">
+<h2>Welcome Applicant</h2>
+    <div class = "two-list-innerbox">
+        <div class = "job-list-box">
+            <p> Open job listings</p>
+            <ul class ="job-list">
+                {{#each result}}
+                <li class = "eachJob" onclick="">
+                    <form action="/viewJobDescription?jobId={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
+                    <label for={{_id}}"form" >{{jobTitle}}</label>  
+                    <button type="submit" form={{_id}} value="Submit"> View</button>    
+                    </form>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+     
+        <div class = "application-list-box">
+            <p>The Job you have applied</p>
+            <ul class ="application-list">
+                {{#each applicationResult}}
+                <li class = "each-application-list" onclick="">
+                    <form action="/viewApplicationForApplicant?applicationID={{_id}}" method="POST" id={{_id}} class={{_id}}"form">
+                    <label for={{_id}}"form" >{{jobName}}</label>  
+                    <button type="submit" form={{_id}} value="Submit"> View</button>    
+                    </form>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
