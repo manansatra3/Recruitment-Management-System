@@ -57,22 +57,22 @@ app.use(session({
 
 }))
 
-// const isAuth = (req, res, next) => {
-//   console.log(req.session.authority)
-//   // if (req.path=='/') {
-//   //   console.log("trying to access homepage")
-//   //   next();
-//   // }
-//   if ((req.session.authority == undefined || req.session.authority==false) && req.path!=='/') {
-//     // console.log("Not logged in!")
-//     res.render('errorPage', { e: { statusCode: "401", error: "You are not logged in, please login", redirect: "/" } })
-//     //  next();
-//   } else {
-//     // console.log("logged in")
-//     next();
-//   }
-// }
-// app.use(isAuth);
+//const isAuth = (req, res, next) => {
+  // console.log(req.session.authority)
+  // if (req.path=='/') {
+  //   console.log("trying to access homepage")
+  //   next();
+  // }
+ // if (req.path!=='/' && (req.session.authority == undefined || req.session.authority==false)) {
+    // console.log("Not logged in!")
+   // res.render('errorPage', { e: { statusCode: "401", error: "You are not logged in, please login", redirect: "/" } })
+    //  next();
+  //} else {
+    // console.log("logged in")
+   // next();
+ // }
+//}
+//app.use(isAuth);
 configRoutes(app);
 
 app.listen(3000, () => {
