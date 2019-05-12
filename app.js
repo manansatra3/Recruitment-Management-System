@@ -41,21 +41,31 @@ const rewriteUnsupportedBrowserMethods = (req, res, next) => {
 
 app.use("/public", static);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(rewriteUnsupportedBrowserMethods);
-app.engine("handlebars",handlebarsInstance.engine);
-app.set("view engine","handlebars");
+app.engine("handlebars", handlebarsInstance.engine);
+app.set("view engine", "handlebars");
 app.set("views", viewPath);
 
 
 app.use(session({
   name: "AuthCookie",
-  secret : "RMS project",
+  secret: "RMS project",
   resave: false,
   saveUninitialized: true
 
 }))
 
+const isAuth = (req, res, next) => {
+  if (req.session.authority == false) {
+    console.log("Not logged in!")
+    res.render('errorPage', { e: { statusCode: "401", error: "You are not logged in, please login", redirect: "/" } })
+    //  next();
+  } else {
+    next();
+  }
+}
+app.use(isAuth);
 configRoutes(app);
 
 app.listen(3000, () => {

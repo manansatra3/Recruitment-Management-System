@@ -10,6 +10,7 @@ const fs = require('fs');
 const crypto = require('crypto')
 const multer = require('multer')
 const archiver = require('archiver');
+const application = mongoCollections.application;
 
 async function foo(userId, jobId) {
     console.log(`In foo the userId is ${userId}`)
@@ -83,4 +84,22 @@ function getDocuments(docArray) {
     })
 }
 
-module.exports = { getDocuments, foo };
+async function fetchApplicantInfo (userId) {
+    console.log(userId)
+    const usersCollection = await users();
+    const userObject = await usersCollection.findOne({_id: ObjectID(userId)});
+    const applicationCollection = await application();
+    const applicationObject = await applicationCollection.findOne({userId: userId});
+    console.log(applicationObject);
+    const returnObject = {
+        firstName: userObject.firstName,
+        lastName: userObject.lastName,
+        email: userObject.email,
+        phoneNumber: userObject.phoneNumber,
+        applicationStatus: applicationObject.applicationStatus
+    };
+    return returnObject;
+
+}
+
+module.exports = { getDocuments, foo, fetchApplicantInfo };

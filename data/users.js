@@ -1,6 +1,7 @@
 const mongoCollections = require("./collection");
 const  users= mongoCollections.users;
 const bcrypt = require("bcrypt");
+const { ObjectId } = require('mongodb');
 
 module.exports ={
     /**
@@ -68,8 +69,10 @@ module.exports ={
         if(!id){
             throw "Error: no id was provided";
         }
+
+        var targetID = ObjectId.createFromHexString(id.toString());
         const person = await users();
-        const findPerson = await person.findOne({_id: id});
+        const findPerson = await person.findOne({_id: targetID});
         if(findPerson === null){
             throw "No person with that id";
         }
@@ -83,6 +86,7 @@ module.exports ={
         {
             throw "User name not provided"
         }
+
         const person = await users();
         const findPerson = await person.findOne({username:userName});
         // if(findPerson === null){
