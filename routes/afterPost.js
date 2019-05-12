@@ -35,7 +35,7 @@ const usersData = req.body;
       console.log(req.body.jobTitle)
     var createdUser = await jobDescription.createjobDescription(req.body.jobTitle,req.body.jobType, req.body.jobLocation, req.body.experienceLevel, req.body.jobDescription);
   
-    //res.status(200).render("loginPage/aftersignup", {});
+    res.redirect('/employer/postOrView');
   }
   catch(error)
   {
