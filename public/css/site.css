@@ -266,7 +266,7 @@ body{
 }
 
 /*afterSubmitApplication     afterSubmitApplication     afterSubmitApplication   afterSubmitApplication*/
-/* .afterSubmitApplicationBox{
+.afterSubmitApplicationBox{
     background: #fff;
     padding-left: 20px;
     padding-right: 20px;
@@ -276,4 +276,4 @@ body{
 
 .afterSubmitApplicationBox h2{
     color: #7471A8;
-} */
+}
