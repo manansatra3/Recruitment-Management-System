@@ -54,6 +54,12 @@ To login as a recruiter:
 5. Viewing Application
 6. Application Status
 
+#Group Members
+- Mohit Bhagchandani
+- Mana Satra
+- Zhang Peng
+- Christina Li
+- Ekaterina Bevinova
 
 
 
