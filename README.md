@@ -66,7 +66,7 @@ To login as a recruiter:
 1. Candidate Login
 2. Recruiter Login
 3. Job Posting
-4. Application submission
+4. Application Submission
 5. Viewing Application
 6. Application Status
 
