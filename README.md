@@ -4,7 +4,11 @@ Project for CS 546 Web Programming at Stevens Institute of Technology.
 Step 1: `npm install` to install the neccessary modules 
 
 Step 2: Seed the database
-Run the following command: `node tasks/seed.js`
+Run the following command: 
+    ```
+    node tasks/seed.js
+    ctrl + c
+    ```
 
 The collections "users" and "jobDescription" would be populated by running the above command.
 
