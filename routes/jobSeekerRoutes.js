@@ -8,7 +8,7 @@ const mongoCollections = require("./../data/collection");
 const jobsAndDocs = mongoCollections.jobsAndDocs;
 const jobDescription = data.jobDescription;
 const user = data.usersData;
-//
+const xss = require ('xss');
 const application = require("../data/application")
 
 const upload = multer()
@@ -73,6 +73,7 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
     //         return
     //     }
         // console.log("in post submitApplication");
+        xss (req.body.extraComments);
         const currentUser = req.session.userID;
         const jobId = req.params.jobId;
         // console.log(req.files.length)

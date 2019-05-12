@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
+const xss = require ('xss');
 
 isAuthRec = (req, res, next) => {
     // console.log(req.session.authority)
@@ -75,6 +76,7 @@ router.get("/viewApplications/:jobId/:userId", async (req, res) => {
 });
 
 router.post("/viewApplications/:jobId/:userId", async (req, res) => {
+    xss(req.body);
     try {
         // console.log('gonna start download');
         const userId = req.params.userId;
@@ -96,6 +98,7 @@ router.post("/viewApplications/:jobId/:userId", async (req, res) => {
 });
 
 router.post("/viewApplications/getApplicantNames:JobId?", async (req, res) => {
+    xss(req.body);
     const application = data.application;
     var applicants = [];
     //console.log(req.query)
@@ -122,6 +125,7 @@ router.get("/applicationStatus/:jobId/:userId", async(req, res) => {
     res.render("changeStatus", {userId, jobId});
 })
 router.post("/applicationStatus/:jobId/:userId", async (req, res) => {
+    xss(req.body);
     const application = data.application;
     let status = await application.changeStatus(req.body.radioButton, req.params.userId);
     res.redirect(`/employer/viewApplications/${req.params.jobId}/${req.params.userId}`)
