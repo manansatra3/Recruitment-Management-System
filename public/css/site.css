@@ -8,6 +8,8 @@ body{
 }
 
 
+
+
 .loginbox{
     width: 480px;
     background: #fff;
@@ -128,20 +130,97 @@ body{
     font-size: 14px;
 }
 
+
+.loginPageOr{
+    text-align: center;
+}
+
+
+
+/* applicantViewJobPostings */
+
 .job-list-box{
     float: left;
     width: 50%;
+    /* border: 1px solid #7471A8; */
 
+}
+
+.job-list-box h3{
+
+    color: #7471A8;
+    text-align: center;
+
+}
+
+
+.job-list{
+    list-style:none;
+    text-align: center;
+}
+
+.job-list button{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    /* margin-top: 20px; */
+    width: 47px;
+    height: 20px; 
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer
 }
 
 .application-list-box{
     float: right;
     width: 50%;
+    /* border: 1px solid #7471A8; */
 
 }
 
-.two-list-box h2{
+.application-list{
+    list-style:none;
+    text-align: center;
+}
+
+.application-list button{
+    background: #7471A8;
+    color: #fff;
+    border: 1px solid #7471A8;
+    /* margin-top: 20px; */
+    width: 47px;
+    height: 20px; 
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer
+}
+
+.application-list-box h3{
+
     color: #7471A8;
+    text-align: center;
+
+}
+
+
+
+
+
+.two-list-box{
+    padding:10px;
+    overflow:hidden;
+    background: #fff;
+    margin: 60px auto 0; 
+
+}
+
+
+
+
+.applicantViewJobPostingh2{
+    color: #7471A8;
+    text-align: center;
+    
 }
 
 

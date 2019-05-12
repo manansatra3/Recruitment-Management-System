@@ -1,8 +1,9 @@
+
 <div class = "two-list-box">
-<h2>Welcome Applicant</h2>
-    <div class = "two-list-innerbox">
+    <h2 class= applicantViewJobPostingh2>Welcome Applicant</h2>
+    {{!-- <div class = "two-list-innerbox"> --}}
         <div class = "job-list-box">
-            <p> Open job listings</p>
+            <h3> Open job listings</h3>
             <ul class ="job-list">
                 {{#each result}}
                 <li class = "eachJob" onclick="">
@@ -16,7 +17,7 @@
         </div>
      
         <div class = "application-list-box">
-            <p>The Job you have applied</p>
+            <h3>The Job you have applied</h3>
             <ul class ="application-list">
                 {{#each applicationResult}}
                 <li class = "each-application-list" onclick="">
@@ -28,5 +29,5 @@
                 {{/each}}
             </ul>
         </div>
-    </div>
+    {{!-- </div> --}}
 </div>
