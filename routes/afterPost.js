@@ -32,7 +32,7 @@ const usersData = req.body;
       if(typeof(req.body.jobDescription) !== "string"){
         res.status(400).json({message : "Job Description should be string"})
       }
-      console.log(req.body.jobTitle)
+      // console.log(req.body.jobTitle)
     var createdUser = await jobDescription.createjobDescription(req.body.jobTitle,req.body.jobType, req.body.jobLocation, req.body.experienceLevel, req.body.jobDescription);
   
     res.redirect('/employer/postOrView');
