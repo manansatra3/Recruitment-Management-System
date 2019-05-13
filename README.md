@@ -32,9 +32,8 @@ In our new databases, we got rid of Applicant DB and merged it into our users db
     "userId": "Applicant's Id"
     "jobId": "Array of documents Ids"
 ```
-```
 In this applicationDocuments collection, the filename cannot be hashed due to the library (archiver) we are using to download all the documents as a zip. Archiver uses the original file name. Also as discussed, please only upload .doc .docx. and .pdf files, there is no backend code that restricts the uploads of other file types.
- 
+```
     applicantDocuemnts.files: {
         "uploadDate": "Applicant Submission Time"
         "filename": "documents"
