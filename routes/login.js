@@ -3,12 +3,13 @@ const router = express.Router();
 const data = require("../data");
 const users = data.usersData;
 const bcrypt = require("bcrypt")
+const xss = require ('xss');
 
 router.get("/", async (req, res) => {
   res.render("loginPage/loginPage", {});
 });
 router.post("/", async (req, res, next) => {
-  
+  xss(req.body);
   var requestBody = req.body
   var userName= requestBody.userName
   var password = requestBody.password

@@ -17,7 +17,7 @@ isAuthJobSeeker = (req, res, next) => {
   }
 };
 
-router.use(isAuthJobSeeker)
+// router.use(isAuthJobSeeker)
 
 
 
