@@ -69,7 +69,7 @@ router.get("/viewApplications/:jobId/:userId", async (req, res) => {
     // console.log(req.params);
     const userId = req.params.userId;
     const jobId = req.params.jobId;
-    const applicantInfo = await data.getApplicantDocuments.fetchApplicantInfo(userId);
+    const applicantInfo = await data.getApplicantDocuments.fetchApplicantInfo(userId, jobId);
     // console.log(`HIII ${applicantInfo}`)
     res.render('viewIndividualApplicant.handlebars',{e: {applicantInfo, jobId, userId}})
 });

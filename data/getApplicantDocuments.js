@@ -84,12 +84,12 @@ function getDocuments(docArray) {
     })
 }
 
-async function fetchApplicantInfo (userId) {
+async function fetchApplicantInfo (userId, jobId) {
     // console.log(userId)
     const usersCollection = await users();
     const userObject = await usersCollection.findOne({_id: ObjectID(userId)});
     const applicationCollection = await application();
-    const applicationObject = await applicationCollection.findOne({userId: userId});
+    const applicationObject = await applicationCollection.findOne({userId: userId, jobId: jobId});
     // console.log(applicationObject);
     const returnObject = {
         firstName: userObject.firstName,
