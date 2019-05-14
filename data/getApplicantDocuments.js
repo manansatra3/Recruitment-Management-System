@@ -90,13 +90,21 @@ async function fetchApplicantInfo (userId, jobId) {
     const userObject = await usersCollection.findOne({_id: ObjectID(userId)});
     const applicationCollection = await application();
     const applicationObject = await applicationCollection.findOne({userId: userId, jobId: jobId});
-    // console.log(applicationObject);
+    let jobsAndDocsCollection = await jobsAndDocs();
+    let jobsAndDocsObject = await jobsAndDocsCollection.findOne({userId});
+    let docArray = jobsAndDocsObject[jobId];
+    let appDocCollection = await applicantDocuments();
+    let fileInfo = await appDocCollection.findOne({_id: ObjectID(docArray[0])})
+    // console.log(fileInfo.metadata.extraComments);
+    let extraComments = fileInfo.metadata.extraComments;
+    // console.log(`ExtraComments in fetchApplicationInfo ${extraCommentsVariable}`);
     const returnObject = {
         firstName: userObject.firstName,
         lastName: userObject.lastName,
         email: userObject.email,
         phoneNumber: userObject.phoneNumber,
-        applicationStatus: applicationObject.applicationStatus
+        applicationStatus: applicationObject.applicationStatus,
+        extraComments
     };
     return returnObject;
 
