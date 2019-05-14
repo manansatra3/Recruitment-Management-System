@@ -32,7 +32,9 @@ In our new databases, we got rid of Applicant DB and merged it into our users db
     "userId": "Applicant's Id"
     "jobId": "Array of documents Ids"
 ```
-In this applicationDocuments collection, the filename cannot be hashed due to the library (archiver) we are using to download all the documents as a zip. Archiver uses the original file name. Also as discussed, please only upload .doc .docx. and .pdf files, there is no backend code that restricts the uploads of other file types.
+In this applicationDocuments collection, the filename cannot be hashed due to the library (archiver) we are using to download all the documents as a zip. Archiver uses the original file name. Also as discussed, please only upload .doc .docx. and .pdf files, there is no backend code that restricts the uploads of other file types. Uploading files of other extensions wouldn't break the code though!
+Also, a side note: do not use the same file twice to upload for the same application i.e.John uploading file1 as resume and file1 as cover letter for the same job A. Another applicant Sam can use the same file1 in his application for job A, not an issue! (but again not the same file1 twice for the same job A by Sam)
+An applicant can apply for the same job multiple times, but the recruiter would only see the most recent documents/application from the applicant.
 ```
     applicantDocuemnts.files: {
         "uploadDate": "Applicant Submission Time"
