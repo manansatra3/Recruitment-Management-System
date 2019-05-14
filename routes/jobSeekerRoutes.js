@@ -90,22 +90,22 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
             }
             // console.log(`Current user's userId is ${currentUser}`)
             // console.log(`Ids of all documents uploaded by userId ${currentUser} for jobId ${jobId} are ${allDocIds}`);
-            const jobsAndDocsCollection = await jobsAndDocs();
+            // const jobsAndDocsCollection = await jobsAndDocs();
             // console.log("Collection hunting done");
-            const exist = await jobsAndDocsCollection.findOne({userId:currentUser})
+            // const exist = await jobsAndDocsCollection.findOne({userId:currentUser})
             // console.log(`finding done with result of ${exist}`)
-            if (exist!==null) {
-                // console.log("User already exists in jobsAndDocs")
-                await jobsAndDocsCollection.updateOne({_id: exist._id},{ $set: {[req.params.jobId]:allDocIds}});
-            }
-            else {
+            // if (exist!==null) {
+            //     // console.log("User already exists in jobsAndDocs")
+            //     await jobsAndDocsCollection.updateOne({_id: exist._id},{ $set: {[req.params.jobId]:allDocIds}});
+            // }
+            // else {
                 // console.log(`UserId ${userId} does not exists in jobsAndDocs collection of Mongo. So creating a new document!`);
-                const toBeInsertedInDb = {
-                    userId: currentUser,
-                    [req.params.jobId]: allDocIds
-                };
-                await jobsAndDocsCollection.insertOne(toBeInsertedInDb);
-            }
+            //     const toBeInsertedInDb = {
+            //         userId: currentUser,
+            //         [req.params.jobId]: allDocIds
+            //     };
+            //     await jobsAndDocsCollection.insertOne(toBeInsertedInDb);
+            // }
 
 
             //
@@ -114,10 +114,10 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
             // console.log("hi");
             // console.log(currentUser)
             // console.log(req.params.jobId)
-                const toBeInsertedInApplicationCollection = {
-                    userId: currentUser,
-                    jobId: req.params.jobId
-                }
+                // const toBeInsertedInApplicationCollection = {
+                //     userId: currentUser,
+                //     jobId: req.params.jobId
+                // }
             // console.log(toBeInsertedInApplicationCollection)
             var targetUser = await user.get(currentUser);
             var currentUserName = targetUser.firstName + " " + targetUser.lastName;
@@ -126,7 +126,9 @@ router.post('/submitApplication/:jobId', upload.array('docs'), async (req, res) 
             var job = await jobDescription.getJobById(jobID)
             var jobName = job.jobTitle;
             var userName = currentUserName;
-            await application.createApplication(toBeInsertedInApplicationCollection.userId,toBeInsertedInApplicationCollection.jobId,jobName,userName);
+
+            //console.log("hahahah")
+            await application.createApplication(currentUser, jobId, jobName, currentUserName, allDocIds, extraComments);
 
 
 

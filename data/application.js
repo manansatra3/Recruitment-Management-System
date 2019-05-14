@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 
 module.exports ={
     
-    async createApplication(userId,jobId,jobName,fullName)
+    async createApplication(userId,jobId,jobName,fullName, docs, extraContent)
     {
         // console.log("hi")
         // console.log(userId)
@@ -31,7 +31,10 @@ module.exports ={
             applicationTime,
             jobName,
             applicationStatus,
-            fullName
+            fullName,
+            docs,
+            extraContent
+
 
         };
         const insert = await newApplication.insertOne(applicationObject);
@@ -39,7 +42,7 @@ module.exports ={
             throw "Could not add person";
         }
         const newId = insert.insertedId;
-        return await this.get(newId);
+        return newId;
 
     },
     async get(targetUserId){
@@ -76,16 +79,16 @@ module.exports ={
         var targetObjectID = ObjectId.createFromHexString(applicationID);
         const updateResult = await newApplication.updateOne({_id: targetObjectID }, {$set: {applicationStatus:newStatus}});
 
-        if (updateResult.modifiedCount === 0) {
-            let errorMessage = `Error: update application: (${targetObjectID}) with new status (${newStatus}) fail!`;
-            throw errorMessage;
-        }
+        // if (updateResult.modifiedCount === 0) {
+        //     let errorMessage = `Error: update application: (${targetObjectID}) with new status (${newStatus}) fail!`;
+        //     throw errorMessage;
+        // }
 
         const result = await newApplication.findOne({_id: targetObjectID});
-        if (result === null) {
-            let errorMessage = `Error: there is not application with ID ${targetObjectID} in the collection, when we try to find updated information!`;
-            throw errorMessage;
-        }
+        // if (result === null) {
+        //     let errorMessage = `Error: there is not application with ID ${targetObjectID} in the collection, when we try to find updated information!`;
+        //     throw errorMessage;
+        // }
 
         return result;
     },
@@ -171,6 +174,43 @@ module.exports ={
             applicationStatus: status
         }});
         return updated;
-    }
+    },
+
+    // async  setApplicationStatus(applicationId, status){
+
+
+    //     const applicationData = await application();
+    //     const updateResult = await applicationData.updateOne({_id: id }, {$set: {animalType:newType}});
+
+    //     if (updateResult.modifiedCount === 0) {
+    //         let errorMessage = `Error: update id(${id}) with new animalType (${newType}) fail!`;
+    //         throw errorMessage;
+    //     }
+
+    //     const result = await animalsCollection.findOne({_id: id});
+    //     if (result === null) {
+    //         let errorMessage = `Error: there is not animal with ID ${id} in the collection, when we try to find updated information!`;
+    //         throw errorMessage;
+    //     }
+
+    //     return result;
+
+    // }
+
+    async getDocsByID(applicationID){
+        var targetId = ObjectId.createFromHexString(applicationID);
+        const applicationCollection = await application();
+        const applicationResult = await applicationCollection.findOne({_id: targetId});
+        var docsResult = applicationResult.docs;
+        return docsResult;
+    },   
+
+    async getextraContentByID(applicationID){
+        var targetId = ObjectId.createFromHexString(applicationID);
+        const applicationCollection = await application();
+        const applicationResult = await applicationCollection.findOne({_id: targetId});
+        var extraContentResult = applicationResult.extraContent;
+        return extraContentResult;
+    }  
 
 }

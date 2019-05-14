@@ -60,6 +60,8 @@ function getDocuments(docArray) {
             archive.on('error', (err) => {
                 throw err;
             });
+
+            var index = 1;
             for (eachDoc of docArray) {
                 const appDocCollection = await applicantDocuments();
                 const fileInfo = await appDocCollection.findOne({_id: ObjectID(eachDoc)})
@@ -68,7 +70,8 @@ function getDocuments(docArray) {
                     downloadStream.end()
                     throw { msg: "GridFS Download Error" }
                 })
-                archive.append(downloadStream, {name: fileInfo.filename})
+                archive.append(downloadStream, {name: index+"" +fileInfo.filename});
+                index++;
             }
 
             resolve(archive)
@@ -84,19 +87,20 @@ function getDocuments(docArray) {
     })
 }
 
-async function fetchApplicantInfo (userId, jobId) {
+async function fetchApplicantInfo (userId, jobId, applicationId) {
     // console.log(userId)
     const usersCollection = await users();
     const userObject = await usersCollection.findOne({_id: ObjectID(userId)});
     const applicationCollection = await application();
-    const applicationObject = await applicationCollection.findOne({userId: userId, jobId: jobId});
-    let jobsAndDocsCollection = await jobsAndDocs();
-    let jobsAndDocsObject = await jobsAndDocsCollection.findOne({userId});
-    let docArray = jobsAndDocsObject[jobId];
+    const applicationObject = await applicationCollection.findOne({_id : ObjectID(applicationId)});
+    // let jobsAndDocsCollection = await jobsAndDocs();
+    // let jobsAndDocsObject = await jobsAndDocsCollection.findOne({userId});
+    // let docArray = jobsAndDocsObject[jobId];
+    let docArray = applicationObject.docs;
     let appDocCollection = await applicantDocuments();
     let fileInfo = await appDocCollection.findOne({_id: ObjectID(docArray[0])})
     // console.log(fileInfo.metadata.extraComments);
-    let extraComments = fileInfo.metadata.extraComments;
+    let extraComments = applicationObject.extraContent;
     // console.log(`ExtraComments in fetchApplicationInfo ${extraCommentsVariable}`);
     const returnObject = {
         firstName: userObject.firstName,

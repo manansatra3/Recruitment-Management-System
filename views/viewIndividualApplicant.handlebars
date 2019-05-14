@@ -29,7 +29,7 @@
         <tr>
             <th><label>Application Status:</label></th>
             <td></td>
-            <td><label>{{e.applicantInfo.applicationStatus}}</label></td>
+            <td><label>{{currentStatus}}</label></td>
         </tr>
     </table>
     <hr>
@@ -37,7 +37,7 @@
         <input class="btn btn-primary btn-lg" type="submit" value="Download Documents">
     </form>
     <br>
-    <a href ="/employer/applicationStatus/{{e.jobId}}/{{e.userId}}">Change Status</a>
+    <a href ="/employer/applicationStatus/{{e.jobId}}/{{e.userId}}/{{e.applicationId}}">Change Status</a>
     <br>
     <a href ='/employer/viewApplications'>View More Applications</a>
 </div>

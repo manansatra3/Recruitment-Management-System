@@ -1,13 +1,13 @@
 <div class=changeStatusBox>
     <h1>Change Status</h1>
     <br>
-    <form method="POST" id="statusButton" action="/employer/applicationStatus/{{jobId}}/{{userId}}">
+    <form method="POST" id="statusButton" action="/employer/applicationStatus/{{jobId}}/{{userId}}/{{applicationId}}">
     <input type="radio" id="statusPending" name="radioButton" value="Pending" checked>
     <label for="statusPending">Pending</label>
     <br>
     <input type="radio" id="statusInterview" name="radioButton" value="Interview">
     <label for="statusInterview">Interview</label>
-    <br>
+    <br>    
     <input type="radio" id="statusAccepted" name="radioButton" value="Accepted">
     <label for="statusAccepted">Accepted</label>
     <br>
